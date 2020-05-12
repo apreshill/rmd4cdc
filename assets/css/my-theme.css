@@ -9,7 +9,7 @@
 .large { font-size: 2em; }
 
 .title {
-  font-family: 'Prata', serif;
+  font-family: 'Noto Serif JP', serif;
   font-weight: 400;
 }
 
@@ -125,17 +125,16 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 }
 
 .title-slide {
-  background-image: url(../../images/cell.jpg);
-  background-position: top;
-  background-size: 100%;
+  background-image: url(../../images/title-slide.jpg);
+  background-size: cover;
   background-color: #3b4245;
 }
 
 
 .title-slide h1 {
-  font-family: 'Prata', serif;
+  font-family: 'Noto Serif JP', serif;
   color: #1a162d;
-  font-size: 3em;
+  font-size: 2.6em;
   padding-top: 2em;
   line-height: 1em;
   padding-bottom: .1em;
@@ -143,7 +142,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 }
 
 .title-slide h2 {
-  font-family: 'Muli', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 700;
   font-size: 1.6em;
   color: #1a162d;
@@ -154,7 +153,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 }
 
 .title-slide h3 {
-  font-family: 'Muli', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 1.6em;
   color: #1a162d;
@@ -164,7 +163,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 }
 
 .title-slide h4 {
-  font-family: 'Muli', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 1.4em;
   color: #1a162d;
@@ -178,7 +177,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 
 .inverse h1 {
   font-size: 6em;
-  font-family: 'Prata', serif;
+  font-family: 'Noto Serif JP', serif;
   color: #fff;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -188,7 +187,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 
 .inverse h2 {
   font-size: 8em;
-  font-family: 'Prata', serif;
+  font-family: 'Noto Serif JP', serif;
   text-shadow: 1px 1px 1px #003b3c;
   color: #fff;
   padding-top: 100px;
@@ -197,7 +196,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 
 .inverse h3 {
   font-size: 6em;
-  font-family: 'Prata', serif;
+  font-family: 'Noto Serif JP', serif;
   text-shadow: 1px 1px 1px #003b3c;
   color: #fff;
   background: rgba(167,185,189, 0.6);
