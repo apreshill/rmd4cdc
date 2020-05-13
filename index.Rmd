@@ -1280,7 +1280,7 @@ age_histogram
 
 .center[
 
-```{r out.width='25%', echo = FALSE, fig.retina = 3}
+```{r age-plot, out.width='25%', echo = FALSE, fig.retina = 3}
 age_histogram
 ```
 
