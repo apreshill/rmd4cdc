@@ -319,12 +319,16 @@ class: middle, center
 
 ```{r echo = FALSE}
 yml_empty() %>% 
+ yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
   yml_output(html_document()) %>% 
   asis_yaml_output()
 ```
 
 ```{r echo = FALSE}
 yml_empty() %>% 
+  yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
   yml_output(html_document(toc = TRUE,
                            toc_float = TRUE,
                            theme = "flatly")) %>% 
@@ -342,6 +346,109 @@ knitr::include_graphics("images/orchestra.jpg")
 
 ]
 
+---
+background-image: url(images/Single-rmd.png)
+background-size: contain
+
+---
+background-image: url(images/Single-rmd1.png)
+background-size: contain
+
+---
+background-image: url(images/Single-rmd2.png)
+background-size: contain
+
+---
+background-image: url(images/Single-rmd3.png)
+background-size: contain
+
+---
+class: top center
+
+<video width="1530" height="610" controls>
+    <source src="images/single-doc-knit.mp4" type="video/mp4"> </video>
+
+---
+class: middle center
+background-image: url(images/Single-knit1.png)
+background-size: contain
+
+???
+
+Here is what we knit. 
+
+--
+
+<img src="images/Single-knit2.png" style="
+  position: absolute; 
+  width: 91%; 
+  top: -53px;
+  right: 5px;
+">
+
+???
+
+Using the `THEME:` key in our YAML, we changed our font and colors.
+
+--
+
+<img src="images/Single-knit3.png" style="
+  position: absolute; 
+  width: 97%; 
+  top: -45px;
+  right: -51px;
+">
+
+???
+
+And we have this nice table of contents floating off to the side...
+
+---
+class: middle
+
+# Check-in
+
+.pull-left[
+How do you use only the **default** output options?
+
+(a)
+```yaml
+---
+output: html_document: default
+---
+```
+(b)
+```yaml
+---
+output: html_document
+---
+```
+
+]
+
+--
+
+.pull-right[
+How do you add an output **option** to a format in your YAML?
+
+(a)
+```yaml
+---
+output: 
+  html_document: 
+    toc: true
+---
+```
+
+(b)
+```yaml
+---
+output: 
+  html_document(toc=true)
+---
+```
+
+]
 
 ---
 class: middle, center
@@ -349,20 +456,7 @@ class: middle, center
 # Output formats
 
 
----
-class: middle, center
 
-```{r echo=FALSE,out.width="50%"}
-knitr::include_graphics("images/outputs.png")
-```
-
-???
-
-Built in formats (in the `rmarkdown` package)
-
-versus
-
-extensions (different packages that extend output formats available to you)
 
 ---
 class: middle, center
@@ -408,9 +502,107 @@ Notice that when you knit, it respects those output options in your YAML.
 This way you "save" your output options
 
 
+
 ---
+class: middle
+
+# Check-in
+
+.pull-left[
+How do you add another output **format** to your YAML?
+
+(a)
+```yaml
+---
+output: 
+  html_document: default
+  word_document: default
+---
+```
+(b)
+```
+---
+output: 
+  html_document()
+  word_document()
+---
+```
+
+]
+
+--
+
+
+.pull-right[
+How do you now add output **options** to your YAML?
+
+(a)
+```yaml
+---
+output: 
+  html_document: 
+    toc: true
+  word_document: default
+---
+```
+(b)
+```
+---
+output: 
+  html_document(toc=true)
+  word_document(default)
+---
+```
+
+]
+
+---
+class: middle, center
+# Built-in output formats
+
+
+```{r echo=FALSE, out.width="32%"}
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rmarkdown.png")
+```
+
+---
+class: middle, center
+
+```{r echo=FALSE,out.width="50%"}
+knitr::include_graphics("images/outputs.png")
+```
+
+???
+
+Built in formats (in the `rmarkdown` package)
+
+versus
+
+extensions (different packages that extend output formats available to you)
+
+---
+class: middle, center
 
 # Extension output formats
+
+
+```{r echo=FALSE, out.width="32%"}
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/flexdashboard.png")
+
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/bookdown.png")
+
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png")
+```
+
+---
+class: middle, left
+
+```{r echo=FALSE}
+knitr::include_url("https://rstudio.github.io/distill/")
+```
+
+
+---
 
 
 .pull-left[
@@ -433,95 +625,7 @@ yml_empty() %>%
 ```
 ]
 
----
-class: middle
 
-# Check-in
-
-.pull-left[
-How do you add a single output **format** to your YAML?
-
-(a)
-```yaml
----
-output: html_document: default
----
-```
-(b)
-```yaml
----
-output: html_document
----
-```
-
-]
-
---
-
-.pull-right[
-How do you add an output **option** to a format in your YAML?
-
-(a)
-```yaml
----
-output: 
-  html_document: 
-    toc: true
----
-```
-
-(b)
-```yaml
----
-output: 
-  html_document(toc=true)
----
-```
-
-]
-
----
-class: middle
-
-# Check-in
-
-.pull-left[
-How do you add another output **format** to your YAML?
-
-```yaml
----
-output: 
-  html_document: default
-  word_document: default
----
-output: 
-  html_document()
-  word_document()
----
-```
-
-]
-
---
-
-
-.pull-right[
-How do you now add output **options** to your YAML?
-
-```yaml
----
-output: 
-  html_document: 
-    toc: true
-  word_document: default
----
-output: 
-  html_document(toc=true)
-  word_document(default)
----
-```
-
-]
 
 ---
 template: card0
