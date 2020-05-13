@@ -414,7 +414,7 @@ How do you use only the **default** output options?
 (a)
 ```yaml
 ---
-output: html_document: default
+output: html_document()
 ---
 ```
 (b)
@@ -603,6 +603,11 @@ knitr::include_url("https://rstudio.github.io/distill/")
 
 
 ---
+class: middle
+
+.center[
+# Use an extension package
+]
 
 
 .pull-left[
@@ -610,7 +615,8 @@ knitr::include_url("https://rstudio.github.io/distill/")
 yml_empty() %>% 
   yml_author("Your name here") %>% 
   yml_title("Your title here") %>% 
-  yml_output(distill::distill_article()) %>% 
+  yml_output(distill::distill_article(),
+             bookdown::html_document2()) %>% 
   asis_yaml_output()
 ```
 ]
@@ -620,7 +626,8 @@ yml_empty() %>%
 yml_empty() %>% 
   yml_author("Your name here") %>% 
   yml_title("Your title here") %>% 
-  yml_output(distill::distill_article(toc = TRUE)) %>% 
+  yml_output(distill::distill_article(toc = TRUE),
+             bookdown::html_document2(toc = TRUE, theme = "flatly", toc_float = TRUE)) %>% 
   asis_yaml_output()
 ```
 ]
@@ -956,66 +963,8 @@ n_sites
   
 ]
 
----
-
-# Code chunks
-
-
-.pull-left[
-
-````
-```{r}`r ''`
-ggplot(mockdata, aes(x = arm, 
-                     y = n, 
-                     fill = arm)) +
-  geom_col()
-```
-````
-
-What about this one?
-
-]
-
---
-
-.pull-right[
-
-```{r fig.retina=3, out.width="70%", fig.align='center'}
-ggplot(mockdata, aes(x = arm, 
-                     y = n, 
-                     fill = arm)) +
-  geom_col()
-```
-
-]
 
 ---
-
-# Add chunks
-
-button or
-
-Command (or Cmd) `⌘` + Option (or Alt) `⌥` +  `i` (Mac)
-
-Ctrl + Alt + `i` (Windows/Linux)
-
----
-
-# Run chunks
-
-.pull-left[
-interactively (show button)
-]
-
-.pull-right[
-whole doc (knit button or run all chunks or )
-]
-
-
----
-class: middle, center
-
-# The plots
 
 ```{r load-data2, include=FALSE}
 mockdata <- read_csv(here::here("mockpaper/data/mockdata.csv")) %>%
@@ -1025,7 +974,7 @@ mockdata <- read_csv(here::here("mockpaper/data/mockdata.csv")) %>%
   mutate_at(vars(starts_with("ae_")), ~as.factor(.))
 ```
 
-```{r fig.show="hold", out.width='25%', echo = FALSE, fig.retina=3}
+```{r include = FALSE, fig.show="hold", out.width='25%', echo = FALSE, fig.retina=3}
 source('figs.R')
 age_histogram
 surv_pct_plot
@@ -1033,7 +982,6 @@ surv_days_plot
 ae_pct_plot
 ```
 
----
 
 # Including plots
 
@@ -1421,42 +1369,6 @@ library(tidyverse)
 ```
 
 ]
----
-
-# A global `setup` chunk `r emo::ji("earth_africa")`
-
-One chunk to rule them all
-
-.pull-left[
-
-````
-```{r setup, include = FALSE}`r ''`
-knitr::opts_chunk$set(
-  warning = FALSE,
-  message = FALSE,
-  echo = FALSE,
-  fig.path = "alison-figs/"
-)
-```
-````
-
-]
-
-.pull-right[
-
-+ A special chunk label: `setup`
-
-+ Typically the first chunk
-
-+ All following chunks will use these options (i.e., sets global chunk options)
-
-+ **Tip**: set `include=FALSE`
-
-+ You can (and should) use individual chunk options too
-
-]
-
-
 
 ---
 
@@ -1548,7 +1460,7 @@ glimpse(mockdata)
 
 ---
 
-# Chunk options
+# Other useful chunk options
 
 .pull-left[
 
@@ -1573,6 +1485,42 @@ glimpse(mockdata)
 + Multiple options separated by commas<br>`{r option1=value, option2=value}`
 
 + Careful! The `r` part is the **code engine** (other engines possible)
+
+---
+
+# A global `setup` chunk `r emo::ji("earth_africa")`
+
+One chunk to rule them all
+
+.pull-left[
+
+````
+```{r setup, include = FALSE}`r ''`
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  fig.path = "alison-figs/"
+)
+```
+````
+
+]
+
+.pull-right[
+
++ A special chunk label: `setup`
+
++ Typically the first chunk
+
++ All following chunks will use these options (i.e., sets global chunk options)
+
++ **Tip**: set `include=FALSE`
+
++ You can (and should) use individual chunk options too
+
+]
+
 
 ---
 
@@ -1924,27 +1872,19 @@ class: middle, center
 
 
 
-
----
-
-
-```{r child="how-rmd-works.Rmd"}
-
-```
-
 ---
 class: top
 
-.left-column[
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #2f5275;"></i>
-  <strong class="fa-stack-1x" style="color: #fff;">?</strong>
-</span> 
+# How does R Markdown work?
 
-]
+1. `r emo::ji("shrug")`
 
+1. I press knit, a document appears, and I believe that anything happening in between could be actual magic.
 
-.right-column[
+1. `knitr` executes the code and converts `.Rmd` to `.md`; **Pandoc** renders the `.md` file to the output format you want.
+
+---
+class: top
 
 # How *does* R Markdown work?
 
@@ -1954,7 +1894,7 @@ class: top
 
 1. `knitr` executes the code and converts `.Rmd` to `.md`; **Pandoc** renders the `.md` file to the output format you want. (`r emo::ji("heavy_check_mark")`)
 
-]
+
 
 ---
 class: middle, center
@@ -1998,12 +1938,8 @@ Which of the following is **NOT** a part of R Markdown basic anatomy?
 
 
 ---
-class: your-turn
 
-
-# Your turn
-
-## Mad libs style &mdash; with a neighbor
+# Mad libs check-in
 
 ```markdown
  ___________ is written at the top between `---` in ________.
@@ -2019,19 +1955,10 @@ class: your-turn
        noun                                               noun
 ```
 
-_psst: answers on next slide..._
-
-```{r echo=FALSE}
-countdown(minutes = 3)
-```
 
 ---
-class: your-turn
 
-
-# Your turn
-
-## Answers
+# Mad libs check-in
 
 ```markdown
  Metadata is written at the top between `---` in YAML.
@@ -2062,60 +1989,6 @@ mockdata <- mockdata_all %>%
 source('figs.R')
 ```
 
-
----
-class: your-turn
-
-# Your turn: Part 1 of 2
-
-**WARM-UP**: open `03-draft.Rmd` and read the source file. It has several figures coded using the `ggplot2` package.
-
-1. Knit the document to the `bookdown::html_document2` format &mdash; behold!
-
-1. Add output options to this format to use one of the [bootswatch themes](https://rmarkdown.rstudio.com/docs/reference/html_document.html) and include a [floating table of contents](https://rmarkdown.rstudio.com/docs/reference/html_document.html#floating-table-of-contents). *(hint: `?html_document`)*
-
-1. Knit to `bookdown::word_document2` (no options)- how does it look?
-
-1. Add `distill::distill_article` as an output format (consider adding a TOC too) and knit- what differences do you see between this and the `bookdown::html_document2` format?
-
-_psst...next slide has answers..._
-
-```{r echo=FALSE}
-countdown(minutes = 5)
-```
-
-
----
-class: your-turn
-
-# Answer
-
-.pull-left[
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_output(bookdown::html_document2(theme = "flatly", toc = TRUE, toc_float = TRUE),
-             bookdown::word_document2(),
-             distill::distill_article(toc = TRUE)) %>% 
-  asis_yaml_output()
-```
-]
-
-.pull-right[
-````
-```{r setup, include=FALSE}`r ''`
-knitr::opts_chunk$set(
-  echo = FALSE,
-  warning = FALSE,
-  message = FALSE,
-  comment = NA,
-  R.options = list(width = 70)
-)
-```
-````
-
-Distill is much less chatty than other outputs due to default `knitr` code chunk options: https://rstudio.github.io/distill/basics.html#code-blocks
-
-]
 
 
 ---
@@ -2249,6 +2122,21 @@ https://jenthompson.me/examples/progressdash.html
 https://jenthompson.me/2018/02/09/flexdashboards-monitoring/
 
 ---
+class: middle, center
+
+<https://bookdown.org/yihui/bookdown/>
+
+<iframe src="https://bookdown.org/yihui/bookdown/" height="600" width="1200" frameborder="0"></iframe> 
+
+---
+class: center, middle
+
+
+<https://bookdown.org/yihui/blogdown/>
+
+<iframe src="https://academic-demo.netlify.com/" height="600" width="1200" frameborder="0"></iframe> 
+
+---
 class: middle, center, inverse
 
 <span class="fa-stack fa-4x">
@@ -2273,7 +2161,7 @@ class: middle
 _Help > Cheatsheets > RStudio IDE_
 
 ```{r echo = FALSE, out.width = "50%", fig.link="https://www.rstudio.com/resources/cheatsheets/#ide"}
-knitr::include_graphics("https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/rstudio-ide.png")
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/0dc0efccfaf638de8be4ce43e2bab8a91541d3d2/c4fdc/wp-content/uploads/2018/08/rstudio-ide.png")
 ```
 ]
 
@@ -2290,7 +2178,7 @@ class: middle
 _Help > Cheatsheets > R Markdown Cheat Sheet_
 
 ```{r echo = FALSE, out.width="50%", fig.link="https://www.rstudio.com/resources/cheatsheets/#rmarkdown"}
-knitr::include_graphics("https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/rmarkdown-2.0.png")
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/65dffd1bdcaa0025006262164d98e8068e8b4387/c3895/wp-content/uploads/2018/08/rmarkdown-2.0.png")
 ```
 ]
 
@@ -2307,7 +2195,7 @@ class: middle
 _Help > Cheatsheets > R Markdown Reference Guide_
 
 ```{r echo = FALSE, out.width = "40%", fig.link="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf"}
-knitr::include_graphics("https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/uploads/2015/03/rmarkdown-reference-guide.png")
+knitr::include_graphics("https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference-guide.png")
 ```
 
 ]
