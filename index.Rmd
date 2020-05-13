@@ -72,6 +72,10 @@ layout: true
 
 <div class="my-footer"><span>https://rstd.io/rmd4medicine-cloud</span></div>
 
+---
+class: inverse, middle, center
+
+# What is R Markdown?
 
 ---
 
@@ -130,6 +134,11 @@ background-image: url(images/rmarkdown_wizards.png)
 background-size: contain
 
 .footnote[Art by [Allison Horst](https://twitter.com/allison_horst?lang=en)]
+
+---
+class: inverse, middle, center
+
+# Why R Markdown?
 
 ---
 class: center
@@ -376,39 +385,17 @@ knitr::include_graphics("images/rmdbase-formats.png")
 https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats
 
 ---
-class: your-turn
 
-# Your turn
-
-## Use a different built-in format
+# `r emo::ji("yarn")` Knit
 
 .pull-left[
-
-Use the drop-down menu for the `r emo::ji("yarn")` **Knit** button and try:
-
-1. Knit to Word
-
-1. Knit to PDF
-
-]
-
-.pull-right[
 ```{r echo=FALSE, out.width="60%", fig.align="center"}
 knitr::include_graphics("images/knit-dropdown.png")
 ```
 
 ]
 
-```{r echo = FALSE}
-countdown(minutes = 2)
-```
-
-
----
-
-# Temp check `r emo::ji("thermometer")`
-
-Does your current YAML look like this?
+.pull-right[
 
 ```{r echo=FALSE}
 yml_empty() %>% 
@@ -420,6 +407,7 @@ yml_empty() %>%
              )  %>% 
   asis_yaml_output()
 ```
+]
 
 ???
 
@@ -429,99 +417,11 @@ Notice that when you knit, it respects those output options in your YAML.
 
 This way you "save" your output options
 
----
-class: your-turn
-
-# Your turn
-
-## Add output options with your YAML
-
-.pull-left[
-
-You just used the drop-down `r emo::ji("yarn")` **Knit** button to knit to Word and PDF. 
-
-1. Change your YAML to the right...
-
-1. Be __very careful__ about indentation and `:` here!!
-
-1. `r emo::ji("yarn")` **Knit** to Word again- is there a TOC?
-
-]
-
-.pull-right[
-
-```{r echo=FALSE}
-yml_empty() %>% 
-  yml_author("Your name here") %>% 
-  yml_title("Your title here") %>% 
-  yml_output(html_document(toc = TRUE, toc_float = TRUE, theme = "flatly"), 
-             word_document(toc = TRUE), 
-             pdf_document()
-             ) %>% 
-  asis_yaml_output()
-```
-
-]
-
-
-```{r echo = FALSE}
-countdown(minutes = 1)
-```
 
 ---
 
-# What is hard about YAML?
+# Extension output formats
 
-.pull-left[
-![](https://media.giphy.com/media/Nt2cPxzpKhbCE/giphy.gif)
-]
-
-.pull-right[
-+ Indentations matter
-
-+ Rarely informative error messages
-
-+ Knowing which output options are relevant for different formats (i.e., Word, PDF, HTML, etc.)
-
-+ Easy to forget the right `key`
-
-+ Easy to forget the possible `values` for a given `key`
-]
----
-class: your-turn
-
-# Your turn
-
-## Use an extension package
-
-
-1. Edit your YAML again! Change the `output:` key to only `distill::distill_article` 
-
-1. Save the document; click on the dropdown `r emo::ji("yarn")` **Knit** button- what do you notice?
-
-1. `r emo::ji("yarn")` **Knit** to distill_article.
-
-**If this was easy**, add a table of contents too.
-
-_psst...answers on the next slide..._
-
-```{r echo = FALSE}
-countdown(minutes = 2)
-```
-
-
-.footnote[(note: this requires you to install the [`distill` package](https://rstudio.github.io/distill/) on your own computer)]
-
-???
-
-At this point, I'm going to stick with the distill_article output format for the rest of this session.
-
----
-class: your-turn
-
-# Your turn
-
-## Answer
 
 .pull-left[
 ```{r echo = FALSE}
@@ -551,9 +451,14 @@ class: middle
 .pull-left[
 How do you add a single output **format** to your YAML?
 
+(a)
 ```yaml
 ---
 output: html_document: default
+---
+```
+(b)
+```yaml
 ---
 output: html_document
 ---
@@ -566,11 +471,17 @@ output: html_document
 .pull-right[
 How do you add an output **option** to a format in your YAML?
 
+(a)
 ```yaml
 ---
 output: 
   html_document: 
     toc: true
+---
+```
+
+(b)
+```yaml
 ---
 output: 
   html_document(toc=true)
@@ -850,20 +761,22 @@ What about lists? Bulleted? Numbered?
 ]
 
 ---
-class: inverse, center, middle
+template: card0
 
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
+---
+template: card1
 
---
+---
+template: card2
 
-# <i class="fab fa-r-project"></i> code
+---
+background-image: url(images/card3.png)
+background-size: contain
+
 
 ---
 
-# Code chunks
+# But first, code chunks
 
 .pull-left[
 
@@ -891,7 +804,7 @@ mockdata %>%
 
 ---
 
-# Code chunks
+# But first, code chunks
 
 .pull-left[
 
@@ -918,7 +831,7 @@ n_sites <- n_distinct(mockdata$site)
 
 ---
 
-# Code chunks
+# But first, code chunks
 
 .pull-left[
 
@@ -945,7 +858,7 @@ n_sites
 
 ---
 
-# Code chunks
+# But first, code chunks
 
 .pull-left[
 
@@ -995,6 +908,368 @@ interactively (show button)
 
 .pull-right[
 whole doc (knit button or run all chunks or )
+]
+
+
+---
+class: middle, center
+
+# The plots
+
+```{r load-data2, include=FALSE}
+mockdata <- read_csv(here::here("mockpaper/data/mockdata.csv")) %>%
+  mutate(fu_fct = fct_recode(as.factor(fu_stat), 
+                             "Lived" = "1", 
+                             "Died" = "2")) %>% 
+  mutate_at(vars(starts_with("ae_")), ~as.factor(.))
+```
+
+```{r fig.show="hold", out.width='25%', echo = FALSE, fig.retina=3}
+source('figs.R')
+age_histogram
+surv_pct_plot
+surv_days_plot
+ae_pct_plot
+```
+
+---
+
+# Including plots
+
+.pull-left[
+```{r age-hist-print1, fig.show='hide'}
+# PLOT: Age distribution -------------------------------------------------------
+ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+```
+
+Will this print?
+
+]
+
+--
+
+.pull-right[
+```{r ref.label='age-hist-print1', echo=FALSE, fig.retina=3}
+```
+
+]
+
+---
+
+# Including plots
+
+.pull-left[
+```{r age-hist}
+# PLOT: Age distribution -------------------------------------------------------
+age_histogram <- 
+  ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+```
+
+What about this?
+
+]
+
+--
+
+.pull-right[
+```{r ref.label='age-hist', echo=FALSE}
+```
+
+]
+
+
+---
+
+# Including plots
+
+.pull-left[
+```{r age-hist-print, fig.show='hide'}
+# PLOT: Age distribution -------------------------------------------------------
+age_histogram <- 
+  ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+age_histogram
+```
+
+]
+
+--
+
+.pull-right[
+```{r ref.label='age-hist-print', echo=FALSE, fig.retina=3}
+```
+
+]
+
+???
+
+
+so, how did we get a figure into R Markdown?
+
+Answer: it has to print!
+
+---
+
+# Chunk options for plots
+
+- fig resolution
+- fig size
+- [fig "device"](https://r4ds.had.co.nz/graphics-for-communication.html#other-important-options)
+
+.footnote[https://yihui.name/knitr/options/#plots]
+
+---
+
+# out.width
+
+.pull-left[
+
+````
+```{r out.width="70%"}`r ''`
+age_histogram
+```
+````
+
+```{r ref.label='age-hist-print', echo=FALSE, out.width="70%", fig.retina=3}
+```
+]
+
+--
+
+.pull-right[
+
+````
+```{r out.width="10%"}`r ''`
+age_histogram
+```
+````
+
+```{r ref.label='age-hist-print', echo=FALSE, fig.retina=3, out.width="10%"}
+
+```
+
+See also:
+
++ `fig.width`
++ `fig.height` 
++ `fig.asp`
+
+https://r4ds.had.co.nz/graphics-for-communication.html#figure-sizing
+
+]
+
+
+---
+
+# fig.cap
+
+For the `ae_pct_plot`, I followed [these recommendations](https://www.bmj.com/content/355/bmj.i5078).
+
+````
+```{r fig.cap="BMJ, 2016 paper", echo=FALSE}`r ''`
+knitr::include_graphics(here::here("images/F3.large.jpg"))
+```
+````
+
+
+
+```{r fig.cap="BMJ, 2016 paper", out.width='35%', echo=FALSE}
+knitr::include_graphics(here::here("images/F3.large.jpg"))
+```
+
+???
+
+This is how you can also add static figures. You could use R Markdown, but with knitr you can also include a figure caption. As you might have noticed in your output, this ends up numbered. 
+
+---
+class: live-code
+
+# Live code demo
+
+We open up `03-draft.Rmd` and take the static image and together we:
+
+1. Label that chunk
+
+1. Add a cross-reference like `see Figure \@ref(fig:bmj)`
+
+1. Try again with `counts-by-site` code chunk: `see Figure \@ref(fig:counts-by-site)` _(watch what happens if try to cross-reference without a caption!)_
+
+.footnote[Cross-referencing only works in these output packages: distill, bookdown, blogdown]
+
+---
+
+# Caption a figure
+
+````
+```{r age-plot, echo=FALSE, fig.cap='Age distributions'}`r ''`
+age_histogram
+```
+````
+
+.center[
+
+```{r age-plot, out.width='25%', echo = FALSE, fig.retina = 3}
+age_histogram
+```
+
+**Fig. 1:** Age distributions
+
+]
+
+
+
+---
+
+# Cross-reference a figure
+
+.pull-left[
+
+See Figure `\@ref(fig:age-plot)`.
+
+````
+```{r age-plot, echo=FALSE, fig.cap='Age distributions'}`r ''`
+age_histogram
+```
+````
+
+]
+
+.pull-right[
+
+See Figure [1]().
+
+.center[
+
+```{r ref.label = 'age-plot', out.width='70%', echo = FALSE, fig.retina = 3, fig.cap='Age distributions'}
+```
+
+]
+
+]
+
+---
+
+# Key takeaway
+
+Once you have:
+
+`r emo::ji("heavy_check_mark")` A labeled chunk that produces a plot
+
+`r emo::ji("heavy_check_mark")` A figure caption using `fig.cap`
+
+Then you can have:
+
+### Cross-references!*
+
+.footnote[\* and you are using distill, bookdown, or blogdown output formats]
+
+---
+
+# fig.path
+
+````
+```{r ae-plot, fig.path="figs/", echo=FALSE}`r ''`
+ae_pct_plot
+```
+````
+
+```{r ae-plot, echo=FALSE, fig.retina=3, out.width='70%', fig.asp=.5}
+ae_pct_plot
+```
+
+---
+
+# message / warning
+
+
+
+![](https://www.tidyverse.org/images/tidyverse_1.2.0/tidyverse_1-2-0_pkg_load.gif)
+
+
+
+---
+
+# message / warning
+
+.pull-left[
+
+````
+```{r message=FALSE, warning=FALSE}`r ''`
+library(tidyverse)
+```
+````
+
+]
+
+.pull-right[
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+]
+---
+
+# A global `setup` chunk `r emo::ji("earth_africa")`
+
+One chunk to rule them all
+
+.pull-left[
+
+````
+```{r setup, include = FALSE}`r ''`
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  fig.path = "alison-figs/"
+)
+```
+````
+
+]
+
+.pull-right[
+
++ A special chunk label: `setup`
+
++ Typically the first chunk
+
++ All following chunks will use these options (i.e., sets global chunk options)
+
++ **Tip**: set `include=FALSE`
+
++ You can (and should) use individual chunk options too
+
 ]
 
 ---
@@ -1184,7 +1459,7 @@ show how to add chunk labels and view in IDE interactively
 ---
 class: middle, center
 
-# Pet or livestock?
+# Crop or houseplant?
 
 .footnote[https://masalmon.eu/2017/08/08/chunkpets/]
 
@@ -1197,13 +1472,15 @@ class: middle, center
 
 ### Good
 
-`myplot`
-
 `my-plot`
 
-`myPlot`
+`myplot`
 
 `myplot1`
+
+`myplot-1`
+
+`MY-PLOT`
 
 ]
 
@@ -1219,786 +1496,6 @@ everything else!
 
 ]
 
----
-
-# The setup chunk
-
-
-
-.pull-left[
-
-````
-```{r setup, include=FALSE}`r ''`
-knitr::opts_chunk$set(
-  collapse = TRUE,   
-  comment = "#>", 
-  out.width = "100%" 
-)
-```
-````
-
-]
-
-.pull-right[
-
-+ A special chunk label: `setup`
-
-+ Typically the first chunk
-
-+ All following chunks will use these options (i.e., sets global chunk options)
-
-+ **Tip**: set `include=FALSE`
-
-+ You can (and should) use individual chunk options too
-
-]
-
----
-class: your-turn
-
-# Your turn
-
-## New data dump! `r emo::ji("newspaper")`
-
-Data from more sites just came in &mdash; we now have data for Boston, Seattle, and Denver.
-
-1. Replace `mockboston` in the file `mockbsd`. 
-
-1. `r emo::ji("yarn")` **Knit** to HTML. Do you see data for all 3 sites?
-
-1. Clean up the chunks (split, combine, label, use options as you see fit)
-
-1. Use the RStudio outline pane; rejoice!
-
-**If this was easy**, try to use a parameter for the data file.
-
-_psst...`01-explore-alison-params.Rmd` is still there..._
-
-
-```{r echo = FALSE}
-countdown(minutes = 5)
-```
-
----
-class: middle, center
-
-# Take-aways
-
---
-
-`r emo::ji("heavy_check_mark")` **Document your document:** use YAML to set up meaningful metadata
-
---
-
-`r emo::ji("heavy_check_mark")` **Style your document:** use YAML to add options to your chosen output format
-
---
-
-`r emo::ji("heavy_check_mark")` **Organize your text:** use markdown headers with `#`
-
---
-
-`r emo::ji("heavy_check_mark")` **Organize your code:** use `knitr` chunk labels
-
---
-
-`r emo::ji("heavy_check_mark")` **Style your text:** use markdown **bold**, _italics_, <i class="fas fa-list-ul"></i> bullets, and <i class="fas fa-list-ol"></i> lists
-
---
-
-`r emo::ji("heavy_check_mark")` **Style your output:** use `knitr` chunk options
-
---
-
-`r emo::ji("yarn")` early, `r emo::ji("yarn")` often
-
-
----
-```{r load-data2, include=FALSE}
-mockdata <- read_csv(here::here("mockpaper/data/mockdata.csv")) %>%
-  mutate(fu_fct = fct_recode(as.factor(fu_stat), 
-                             "Lived" = "1", 
-                             "Died" = "2")) %>% 
-  mutate_at(vars(starts_with("ae_")), ~as.factor(.))
-```
-
----
-
-
-```{r child="how-rmd-works.Rmd"}
-
-```
-
----
-class: top
-
-.left-column[
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #2f5275;"></i>
-  <strong class="fa-stack-1x" style="color: #fff;">?</strong>
-</span> 
-
-]
-
-
-.right-column[
-
-# How *does* R Markdown work?
-
-1. `r emo::ji("shrug")` (`r emo::ji("heavy_check_mark")`)
-
-1. ["I press knit, a document appears, and I believe that anything happening in between could be actual magic."](https://twitter.com/allison_horst/status/1070323369600442368?s=20) (`r emo::ji("wizard")`)
-
-1. `knitr` executes the code and converts `.Rmd` to `.md`; **Pandoc** renders the `.md` file to the output format you want. (`r emo::ji("heavy_check_mark")`)
-
-]
-
----
-class: middle, center
-
-```{r echo = FALSE, out.width="25%", fig.align="center"}
-knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rmarkdown.png")
-```
-
-
-> "In a nutshell, R Markdown stands on the shoulders of `knitr` and **Pandoc**.
-
---
-
-> The former executes the computer code embedded in Markdown, and converts R Markdown to Markdown.
-
---
-
-> The latter renders Markdown to the output format you want (such as PDF, HTML, Word, and so on)."
-
---
-
-> &mdash; [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
-
----
-class: center, middle
-
-# Foreshadowing
-
-
-```{r echo=FALSE, out.width="40%"}
-knitr::include_graphics("images/outputs.png")
-```
-
-??? 
-
-but first a Check-in...
-
----
-class: pop-quiz
-
-# Check-in
-
-
-Which of the following is **NOT** a part of R Markdown basic anatomy?
-
-1. Metadata
-
-1. Text
-
-1. CSS
-
-1. Code
-
-1. Output
-
-
----
-class: your-turn
-
-
-# Your turn
-
-## Mad libs style &mdash; with a neighbor
-
-```markdown
- ___________ is written at the top between `---` in ________.
-    noun                                             syntax
-                                                     
-  ______ is written in Markdown.
-   noun         
-  
-  ______ is written in R (or other programming language).
-   noun   
-   
-  The ______ package evaluates the code and produces the ______.
-       noun                                               noun
-```
-
-_psst: answers on next slide..._
-
-```{r echo=FALSE}
-countdown(minutes = 3)
-```
-
----
-class: your-turn
-
-
-# Your turn
-
-## Answers
-
-```markdown
- Metadata is written at the top between `---` in YAML.
-   (noun)                                      (syntax)
-                                                     
-  Text is written in Markdown.
- (noun)         
-  
-  Code is written in R (or other programming language).
- (noun)   
-   
-  The knitr package evaluates the code and produces the output.
-     (noun)                                             (noun) 
-```
-
----
-class: your-turn
-
-# Your turn
-
-Find a partner and look at `02-progress.Rmd` together. 
-Look at the source, then `r emo::ji("yarn")` **Knit**.
-
-Answer the following questions:
-
-1. What is the output **format**?
-
-1. Are there any output **options**?
-
-1. Are any `knitr` **global** chunk options set?
-
-1. Anything in the code look foreign to you? 
-
-1. Anything in the output (or not in the output) surprise you?
-
-```{r echo = FALSE}
-countdown(minutes = 5)
-```
-
----
-template: card0
-
----
-template: card1
-
----
-template: card2
-
----
-background-image: url(images/card3.png)
-background-size: contain
-
----
-class: middle, center
-
-# The line-up
-
-```{r fig.show="hold", out.width='25%', echo = FALSE, fig.retina=3}
-source('figs.R')
-age_histogram
-surv_pct_plot
-surv_days_plot
-ae_pct_plot
-```
-
----
-
-# Including plots
-
-.pull-left[
-```{r age-hist-print1, fig.show='hide'}
-# PLOT: Age distribution -------------------------------------------------------
-ggplot(mockdata, aes(age)) +
-  geom_histogram(color = 'white',
-                 fill = scico(1, 
-                              begin = .3, 
-                              palette = "berlin"),
-                 bins = 20) +
-  labs(x = "Age", 
-       y = "Count") +
-  scale_y_continuous(
-    breaks = scales::pretty_breaks()
-  )
-```
-
-Will this print?
-
-]
-
---
-
-.pull-right[
-```{r ref.label='age-hist-print1', echo=FALSE}
-```
-
-]
-
----
-
-# Including plots
-
-.pull-left[
-```{r age-hist}
-# PLOT: Age distribution -------------------------------------------------------
-age_histogram <- 
-  ggplot(mockdata, aes(age)) +
-  geom_histogram(color = 'white',
-                 fill = scico(1, 
-                              begin = .3, 
-                              palette = "berlin"),
-                 bins = 20) +
-  labs(x = "Age", 
-       y = "Count") +
-  scale_y_continuous(
-    breaks = scales::pretty_breaks()
-  )
-```
-
-What about this?
-
-]
-
---
-
-.pull-right[
-```{r ref.label='age-hist', echo=FALSE}
-```
-
-]
-
-
----
-
-# Including plots
-
-.pull-left[
-```{r age-hist-print, fig.show='hide'}
-# PLOT: Age distribution -------------------------------------------------------
-age_histogram <- 
-  ggplot(mockdata, aes(age)) +
-  geom_histogram(color = 'white',
-                 fill = scico(1, 
-                              begin = .3, 
-                              palette = "berlin"),
-                 bins = 20) +
-  labs(x = "Age", 
-       y = "Count") +
-  scale_y_continuous(
-    breaks = scales::pretty_breaks()
-  )
-age_histogram
-```
-
-]
-
---
-
-.pull-right[
-```{r ref.label='age-hist-print', echo=FALSE}
-```
-
-]
-
-???
-
-
-so, how did we get a figure into R Markdown?
-
-Answer: it has to print!
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
-# Chunk options for plots
-
----
-
-# Chunk options for plots
-
-- fig resolution
-- fig size
-- [fig "device"](https://r4ds.had.co.nz/graphics-for-communication.html#other-important-options)
-
-.footnote[https://yihui.name/knitr/options/#plots]
-
-
----
-
-# Figure resolution
-
-.pull-left[
-
-```{r ref.label='age-hist-print', fig.show='hide'}
-```
-
-]
-
-.pull-right[
-```{r ref.label='age-hist-print', echo=FALSE}
-```
-
-]
-
----
-
-# fig.retina
-
-.pull-left[
-
-````
-```{r}`r ''`
-age_histogram
-```
-````
-
-```{r ref.label='age-hist-print', echo=FALSE, out.width="70%"}
-```
-]
-
---
-
-.pull-right[
-
-````
-```{r fig.retina=3}`r ''`
-age_histogram
-```
-````
-
-```{r ref.label='age-hist-print', echo=FALSE, fig.retina=3, out.width="70%"}
-
-```
-]
-
----
-
-# out.width
-
-.pull-left[
-
-````
-```{r fig.retina=3, out.width="70%"}`r ''`
-age_histogram
-```
-````
-
-```{r ref.label='age-hist-print', echo=FALSE, out.width="70%", fig.retina=3}
-```
-]
-
---
-
-.pull-right[
-
-````
-```{r fig.retina=3, out.width="10%"}`r ''`
-age_histogram
-```
-````
-
-```{r ref.label='age-hist-print', echo=FALSE, fig.retina=3, out.width="10%"}
-
-```
-
-See also:
-
-+ `fig.width`
-+ `fig.height` 
-+ `fig.asp`
-
-https://r4ds.had.co.nz/graphics-for-communication.html#figure-sizing
-
-]
-
-
----
-
-# fig.cap
-
-For the `ae_pct_plot`, I followed [these recommendations](https://www.bmj.com/content/355/bmj.i5078).
-
-````
-```{r fig.cap="BMJ, 2016 paper", echo=FALSE}`r ''`
-knitr::include_graphics(here::here("images/F3.large.jpg"))
-```
-````
-
-
-
-```{r fig.cap="BMJ, 2016 paper", out.width='25%', echo=FALSE}
-knitr::include_graphics(here::here("images/F3.large.jpg"))
-```
-
-???
-
-This is how you can also add static figures. You could use R Markdown, but with knitr you can also include a figure caption. As you might have noticed in your output, this ends up numbered. 
-
----
-class: live-code
-
-# Live code demo
-
-We open up `03-draft.Rmd` and take the static image and together we:
-
-1. Label that chunk
-
-1. Add a cross-reference like `see Figure \@ref(fig:bmj)`
-
-1. Try again with `counts-by-site` code chunk: `see Figure \@ref(fig:counts-by-site)` _(watch what happens if try to cross-reference without a caption!)_
-
-.footnote[Cross-referencing only works in these output packages: distill, bookdown, blogdown]
-
----
-
-# Caption a figure
-
-````
-```{r age-plot, echo=FALSE, fig.cap='Age distributions'}`r ''`
-age_histogram
-```
-````
-
-.center[
-
-```{r age-plot, out.width='25%', echo = FALSE, fig.retina = 3}
-age_histogram
-```
-
-**Fig. 1:** Age distributions
-
-]
-
-
-
----
-
-# Cross-reference a figure
-
-.pull-left[
-
-See Figure `\@ref(fig:age-plot)`.
-
-````
-```{r age-plot, echo=FALSE, fig.cap='Age distributions'}`r ''`
-age_histogram
-```
-````
-
-]
-
-.pull-right[
-
-See Figure [1]().
-
-.center[
-
-```{r ref.label = 'age-plot', out.width='70%', echo = FALSE, fig.retina = 3, fig.cap='Age distributions'}
-```
-
-]
-
-]
-
----
-
-# Key takeaway
-
-Once you have:
-
-`r emo::ji("heavy_check_mark")` A labeled chunk that produces a plot
-
-`r emo::ji("heavy_check_mark")` A figure caption using `fig.cap`
-
-Then you can have:
-
-### Cross-references!*
-
-.footnote[\* and you are using distill, bookdown, or blogdown output formats]
-
----
-class: your-turn
-
-# Your turn: Part 2 of 2
-
-Now go through `03-draft-revised.Rmd` and read the source, then knit.
-
-.pull-left[
-
-```{r eval=FALSE}
-# demographics-----------------------------
-age_density # multi-panel?    <-ignore this
-age_boxplot # multi-panel?    <-ignore this
-demo_tab
-
-# treatment response @ follow-up-----------
-surv_pct_plot # multi-panel?  <-ignore this
-surv_days_plot # multi-panel? <-ignore this
-fu_tab
-
-# adverse events---------------------------
-ae_pct_plot
-ae_tab
-```
-]
-
-.pull-right[
-1. Add new code chunks containing tables and plots where you want.
-
-1. Edit the code chunk options as you need to.
-
-1. Add headers and other Markdown formatting as you see fit.
-
-1. Feel free to add figure captions and in text cross-references.
-]
-
-```{r echo=FALSE}
-countdown(minutes = 5)
-```
-
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
-
-# Combine figures in output
-
----
-
-# Arrange plots in a grid
-
-
-`cowplot::plot_grid()` for multi-panel plots
-
-.footnote[https://wilkelab.org/cowplot/articles/plot_grid.html]
-
----
-class: live-code
-
-# Live code demo
-
-We start with `03-draft-revised.Rmd` and combine `age_density` and `age_boxplot` with the `cowplot` package.
-
-```{r fig.retina=3, fig.asp=.5, out.width="70%", fig.align='center'}
-plot_grid(age_density, age_boxplot, labels = "AUTO")
-```
-
-
----
-class: your-turn
-
-# Your turn
-
-## Make a plot grid
-
-Open up your `03-draft-revised.Rmd`.
-
-Combine `surv_pct_plot` and `surv_days_plot` with `cowplot::plot_grid()`.
-
-
-_psst...my answers on the next slide..._
-
-```{r echo=FALSE}
-countdown(minutes = 3)
-```
-
----
-class: your-turn
-
-# Answers
-
-````
-```{r echo=FALSE, fig.retina=3, fig.asp=.5, fig.width=20}`r ''`
-plot_grid(surv_pct_plot, surv_days_plot, labels = "AUTO")
-```
-````
-
-```{r echo=FALSE, fig.retina=3, fig.asp=.5, fig.width=10, fig.align='center'}
-plot_grid(surv_pct_plot, surv_days_plot, labels = "AUTO")
-```
-
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
-# Get figures out
-
----
-
-# Exporting plots
-
-```{r eval=FALSE}
-ggsave()
-```
-
-
----
-
-# fig.path
-
-````
-```{r ae-plot, fig.path="figs/", echo=FALSE}`r ''`
-ae_pct_plot
-```
-````
-
-```{r ae-plot, echo=FALSE, fig.retina=3, out.width='70%', fig.asp=.5}
-ae_pct_plot
-```
-
-
----
-class: live-code
-
-# Live code demo
-
-We open up `03-draft-revised.Rmd` and together we:
-
-1. Add `fig.path="figs/"` as a `knitr` code chunk option for a single plot _(watch what happens if we don't include the backslash!)_
-
-1. Knit and behold
-
-1. We add a global `setup` chunk, if we have time.
-
----
-class: live-code
-
-# A global `setup` chunk
-
-One chunk to rule them all
-
-````
-```{r setup, include = FALSE}`r ''`
-knitr::opts_chunk$set(
-  warning = FALSE,
-  message = FALSE,
-  echo = FALSE,
-  fig.retina = 3,
-  fig.path = here::here("alison-figs/")
-)
-```
-````
 
 ---
 class: middle, center, inverse
@@ -2312,6 +1809,205 @@ ae_tab <- mockdata %>%
 ae_tab
 ```
 
+
+---
+class: middle, center
+
+# Take-aways
+
+--
+
+`r emo::ji("heavy_check_mark")` **Document your document:** use YAML to set up meaningful metadata
+
+--
+
+`r emo::ji("heavy_check_mark")` **Style your document:** use YAML to add options to your chosen output format
+
+--
+
+`r emo::ji("heavy_check_mark")` **Organize your text:** use markdown headers with `#`
+
+--
+
+`r emo::ji("heavy_check_mark")` **Organize your code:** use `knitr` chunk labels
+
+--
+
+`r emo::ji("heavy_check_mark")` **Style your text:** use markdown **bold**, _italics_, <i class="fas fa-list-ul"></i> bullets, and <i class="fas fa-list-ol"></i> lists
+
+--
+
+`r emo::ji("heavy_check_mark")` **Style your output:** use `knitr` chunk options
+
+--
+
+`r emo::ji("yarn")` early, `r emo::ji("yarn")` often
+
+
+
+
+---
+
+
+```{r child="how-rmd-works.Rmd"}
+
+```
+
+---
+class: top
+
+.left-column[
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #2f5275;"></i>
+  <strong class="fa-stack-1x" style="color: #fff;">?</strong>
+</span> 
+
+]
+
+
+.right-column[
+
+# How *does* R Markdown work?
+
+1. `r emo::ji("shrug")` (`r emo::ji("heavy_check_mark")`)
+
+1. ["I press knit, a document appears, and I believe that anything happening in between could be actual magic."](https://twitter.com/allison_horst/status/1070323369600442368?s=20) (`r emo::ji("wizard")`)
+
+1. `knitr` executes the code and converts `.Rmd` to `.md`; **Pandoc** renders the `.md` file to the output format you want. (`r emo::ji("heavy_check_mark")`)
+
+]
+
+---
+class: middle, center
+
+```{r echo = FALSE, out.width="25%", fig.align="center"}
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rmarkdown.png")
+```
+
+
+> "In a nutshell, R Markdown stands on the shoulders of `knitr` and **Pandoc**.
+
+--
+
+> The former executes the computer code embedded in Markdown, and converts R Markdown to Markdown.
+
+--
+
+> The latter renders Markdown to the output format you want (such as PDF, HTML, Word, and so on)."
+
+--
+
+> &mdash; [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+
+---
+class: center, middle
+
+# Foreshadowing
+
+
+```{r echo=FALSE, out.width="40%"}
+knitr::include_graphics("images/outputs.png")
+```
+
+??? 
+
+but first a Check-in...
+
+---
+class: pop-quiz
+
+# Check-in
+
+
+Which of the following is **NOT** a part of R Markdown basic anatomy?
+
+1. Metadata
+
+1. Text
+
+1. CSS
+
+1. Code
+
+1. Output
+
+
+---
+class: your-turn
+
+
+# Your turn
+
+## Mad libs style &mdash; with a neighbor
+
+```markdown
+ ___________ is written at the top between `---` in ________.
+    noun                                             syntax
+                                                     
+  ______ is written in Markdown.
+   noun         
+  
+  ______ is written in R (or other programming language).
+   noun   
+   
+  The ______ package evaluates the code and produces the ______.
+       noun                                               noun
+```
+
+_psst: answers on next slide..._
+
+```{r echo=FALSE}
+countdown(minutes = 3)
+```
+
+---
+class: your-turn
+
+
+# Your turn
+
+## Answers
+
+```markdown
+ Metadata is written at the top between `---` in YAML.
+   (noun)                                      (syntax)
+                                                     
+  Text is written in Markdown.
+ (noun)         
+  
+  Code is written in R (or other programming language).
+ (noun)   
+   
+  The knitr package evaluates the code and produces the output.
+     (noun)                                             (noun) 
+```
+
+---
+class: your-turn
+
+# Your turn
+
+Find a partner and look at `02-progress.Rmd` together. 
+Look at the source, then `r emo::ji("yarn")` **Knit**.
+
+Answer the following questions:
+
+1. What is the output **format**?
+
+1. Are there any output **options**?
+
+1. Are any `knitr` **global** chunk options set?
+
+1. Anything in the code look foreign to you? 
+
+1. Anything in the output (or not in the output) surprise you?
+
+```{r echo = FALSE}
+countdown(minutes = 5)
+```
+
+
+
 ---
 
 ```{r load-data3, include=FALSE}
@@ -2417,124 +2113,7 @@ Distill is much less chatty than other outputs due to default `knitr` code chunk
 ]
 
 
-
-
 ---
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Hygiene
-
-
----
-class: middle, center
-
-# Philosophy
-
---
-
-.pull-left[
-
-### Less
-
-# `r emo::ji("mouse")`
-]
-
-.pull-right[
-
-### More
-
-# `r emo::ji("musical_keyboard")`
-]
-
----
-class: middle, center
-
-
-.pull-left[
-```{r, echo = FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/hadley/r4ds/master/screenshots/rstudio-workspace.png")
-```
-]
-
-.pull-right[
-# <i class="fas fa-mouse-pointer"></i>
-
-In RStudio: _Tools > Global Options_
-
-]
-
----
-class: middle, center
-
-# Restart R early & often
-
-.pull-left[
-# <i class="fas fa-mouse-pointer"></i>
-
-In RStudio: _Session > Restart R_
-]
-
-.pull-right[
-# <i class="far fa-keyboard"></i>
-
-`Cmd/Ctrl` + `Shift` + `F10` (Mac)   
-or  
-`Ctrl` + `Shift` + `F10` (Windows/Linux)
-
-]
-
----
-class: middle, center
-
-# Reknit up to...
-
-.pull-left[
-# <i class="fas fa-mouse-pointer"></i>
-
-![](images/rstudio-runabove.png)
-
-]
-
-.pull-right[
-# <i class="far fa-keyboard"></i>
-
-Place cursor anywhere in your doc then:
-
-`Command` + `Option` + `P` (Mac)  
-or  
-`Ctrl`+`Alt`+`P`  (Windows/Linux)
-]
-
-
----
-class: middle, center
-
-# <i class="fas fa-smoking-ban"></i>
-
-# Not recommended
-
-```{r eval = FALSE}
-rm(list = ls())
-```
-
-.footnote[https://whattheyforgot.org/save-source.html#rm-list-ls]
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
 
 # Projects
 
@@ -2570,22 +2149,6 @@ Pick one
 knitr::include_graphics("images/rstudio-newproj.png")
 ```
 ]
-
----
-class: middle, center
-
-
-# <i class="far fa-keyboard"></i>
-
-Equivalent to:
-_File > New Project...>_ New or Existing
-
-```{r, eval = FALSE}
-library(usethis)
-create_project(here::here())
-```
-
-.footnote[https://usethis.r-lib.org/reference/create_package.html]
 
 ---
 class: middle, center
@@ -2626,41 +2189,11 @@ class: middle, center
 ![](images/rstudio-blankrmd.png)
 ]
 
----
-class: live-code
-
-# Live code demo
-
-We make our first R project from scratch with a single R Markdown file inside.
-
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# External files
-
----
-class: center
-
-```{r echo=FALSE}
-knitr::include_graphics("images/Data.jpg")
-```
-
-???
-
-save a local copy, keep raw data raw
 
 ---
 class: middle
 
-# File paths
+# Working with data
 
 .pull-left[
 
@@ -2693,147 +2226,6 @@ knitr::include_graphics("images/horst_here.png")
 https://whattheyforgot.org/project-oriented-workflow.html#setwd
 
 ---
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Bibliography
-
----
-
-
-See [citations](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citations)
-
-
-.pull-right[
-Generates these in-text citation styles:
-
-1. Blah blah [see @R-blogdown, pp. 33-35; also @R-knitr, ch. 1].
-
-2. Blah blah [@R-blogdown, pp. 33-35].
-
-3. Blah blah [@R-blogdown; @R-knitr].
-
-4. Yihui says blah [-@R-blogdown].
-
-5. @R-blogdown says blah.
-
-]
-
----
-class: your-turn
-
-# Your turn
-
-### Choose your adventure
-
-1. Take `04-manuscript.Rmd` and add in the tables and figures in code chunks, with code chunk options that make sense. `r emo::ji("yarn")` __Knit__ and/or run chunks interactively as you work.
-
-1. Play with knitting to different output formats. Try to figure out valid output options for each format you can add to your YAML. 
-
-1. Go to https://github.com/thomasp85/scico and try knitting with different palette names. Pick a favorite.
-
-__Too much?__ Look at `04-manuscript-alison.Rmd`, `r emo::ji("yarn")` __Knit__. Then do 2 and 3 above.
-
-__Not enough?__ See next slide for building a graphical user interface for parameters.
-
-```{r echo=FALSE}
-countdown(minutes = 15)
-```
-
----
-class: your-turn
-
-# Your turn
-
-### Extra: Play more with parameters
-
-.pull-left[
-
-From `03-draft.Rmd`
-
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_params(palette = "berlin") %>% 
-  asis_yaml_output()
-```
-
-]
-
-.pull-right[
-
-Try in `04-manuscript.Rmd`
-
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_params(
-    palette = shiny_select("scico palette:", 
-                           choices = c("berlin", "roma", "cork", "grayC"), 
-                           selected = "roma", 
-                           multiple = FALSE)
-  ) %>% 
-  asis_yaml_output()
-```
-]
-
----
-
-# If we have time...
-
-
-.pull-left[
-
-Open & Knit:
-
-`analyis/presentations/slides.Rmd`
-
-```{r echo=FALSE}
-yml_empty() %>% 
-  yml_output(beamer_presentation(slide_level = 2),
-             powerpoint_presentation(),
-             revealjs::revealjs_presentation()) %>% 
-  asis_yaml_output()
-```
-]
-
-.pull-right[
-
-```{r echo = FALSE}
-beamer_slides <-
-  fs::dir_ls(path=here::here("images"), 
-           regexp="beamer*") %>%  
-  purrr::map(magick::image_read) %>% 
-  magick::image_join() %>% 
-  magick::image_animate(fps = 1) 
-beamer_slides
-```
-
-
-]
-
-
----
-class: middle, center, inverse
-
-
-# Time to wrap-up!
-
-```{r echo = FALSE}
-countdown(minutes = 15, update_every = 15)
-```
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">!</strong>
-</span> 
 
 
 # Extension formats
@@ -2850,17 +2242,6 @@ knitr::include_graphics("https://jenthompson.me/images/flexdash_example.png")
 https://jenthompson.me/examples/progressdash.html
 
 https://jenthompson.me/2018/02/09/flexdashboards-monitoring/
-
----
-class: middle, center
-
-# Presentations
-
-```{r echo = FALSE, out.width="50%"}
-beamer_slides
-```
-
-https://bookdown.org/yihui/rmarkdown/presentations.html
 
 ---
 class: middle, center, inverse
@@ -3032,21 +2413,8 @@ knitr::include_graphics("https://raw.githubusercontent.com/rstudio/rmarkdown/gh-
 .footnote[https://bookdown.org/yihui/rmarkdown/parameterized-reports.html,<br>
 https://rmarkdown.rstudio.com/lesson-6.html]
 
----
-
-# More
-
-+ [`redoc` `r emo::ji("package")`](https://noamross.github.io/redoc/)
-
-+ [`spelling` `r emo::ji("package")`](https://docs.ropensci.org/spelling/)
-
-+ [`wordcountaddin` `r emo::ji("package")`](https://github.com/benmarwick/wordcountaddin)
-
 
 ---
 class: inverse, middle, center
 
 # Thank you!
-
-
-

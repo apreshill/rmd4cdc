@@ -50,6 +50,10 @@ layout: true
 
 &lt;div class="my-footer"&gt;&lt;span&gt;https://rstd.io/rmd4medicine-cloud&lt;/span&gt;&lt;/div&gt;
 
+---
+class: inverse, middle, center
+
+# What is R Markdown?
 
 ---
 
@@ -108,6 +112,11 @@ background-image: url(images/rmarkdown_wizards.png)
 background-size: contain
 
 .footnote[Art by [Allison Horst](https://twitter.com/allison_horst?lang=en)]
+
+---
+class: inverse, middle, center
+
+# Why R Markdown?
 
 ---
 class: center
@@ -338,37 +347,15 @@ class: middle, center
 https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats
 
 ---
-class: your-turn
 
-# Your turn
-
-## Use a different built-in format
+# 🧶 Knit
 
 .pull-left[
-
-Use the drop-down menu for the 🧶 **Knit** button and try:
-
-1. Knit to Word
-
-1. Knit to PDF
-
-]
-
-.pull-right[
 &lt;img src="images/knit-dropdown.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ]
 
-<div class="countdown" id="timer_5ebb482c" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
-
----
-
-# Temp check 🌡
-
-Does your current YAML look like this?
+.pull-right[
 
 ```yaml
 ---
@@ -383,6 +370,7 @@ output:
   pdf_document: default
 ---
 ```
+]
 
 ???
 
@@ -392,103 +380,11 @@ Notice that when you knit, it respects those output options in your YAML.
 
 This way you "save" your output options
 
----
-class: your-turn
-
-# Your turn
-
-## Add output options with your YAML
-
-.pull-left[
-
-You just used the drop-down 🧶 **Knit** button to knit to Word and PDF. 
-
-1. Change your YAML to the right...
-
-1. Be __very careful__ about indentation and `:` here!!
-
-1. 🧶 **Knit** to Word again- is there a TOC?
-
-]
-
-.pull-right[
-
-```yaml
----
-author: Your name here
-title: Your title here
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    theme: flatly
-  word_document:
-    toc: true
-  pdf_document: default
----
-```
-
-]
-
-
-<div class="countdown" id="timer_5ebb4639" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
 
 ---
 
-# What is hard about YAML?
+# Extension output formats
 
-.pull-left[
-![](https://media.giphy.com/media/Nt2cPxzpKhbCE/giphy.gif)
-]
-
-.pull-right[
-+ Indentations matter
-
-+ Rarely informative error messages
-
-+ Knowing which output options are relevant for different formats (i.e., Word, PDF, HTML, etc.)
-
-+ Easy to forget the right `key`
-
-+ Easy to forget the possible `values` for a given `key`
-]
----
-class: your-turn
-
-# Your turn
-
-## Use an extension package
-
-
-1. Edit your YAML again! Change the `output:` key to only `distill::distill_article` 
-
-1. Save the document; click on the dropdown 🧶 **Knit** button- what do you notice?
-
-1. 🧶 **Knit** to distill_article.
-
-**If this was easy**, add a table of contents too.
-
-_psst...answers on the next slide..._
-
-<div class="countdown" id="timer_5ebb4759" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
-
-.footnote[(note: this requires you to install the [`distill` package](https://rstudio.github.io/distill/) on your own computer)]
-
-???
-
-At this point, I'm going to stick with the distill_article output format for the rest of this session.
-
----
-class: your-turn
-
-# Your turn
-
-## Answer
 
 .pull-left[
 ```yaml
@@ -520,9 +416,14 @@ class: middle
 .pull-left[
 How do you add a single output **format** to your YAML?
 
+(a)
 ```yaml
 ---
 output: html_document: default
+---
+```
+(b)
+```yaml
 ---
 output: html_document
 ---
@@ -535,11 +436,17 @@ output: html_document
 .pull-right[
 How do you add an output **option** to a format in your YAML?
 
+(a)
 ```yaml
 ---
 output: 
   html_document: 
     toc: true
+---
+```
+
+(b)
+```yaml
 ---
 output: 
   html_document(toc=true)
@@ -819,20 +726,22 @@ What about lists? Bulleted? Numbered?
 ]
 
 ---
-class: inverse, center, middle
+template: card0
 
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;2 &lt;/strong&gt;
-&lt;/span&gt; 
+---
+template: card1
 
---
+---
+template: card2
 
-# &lt;i class="fab fa-r-project"&gt;&lt;/i&gt; code
+---
+background-image: url(images/card3.png)
+background-size: contain
+
 
 ---
 
-# Code chunks
+# But first, code chunks
 
 .pull-left[
 
@@ -867,7 +776,7 @@ mockdata %&gt;%
 
 ---
 
-# Code chunks
+# But first, code chunks
 
 .pull-left[
 
@@ -895,7 +804,7 @@ n_sites &lt;- n_distinct(mockdata$site)
 
 ---
 
-# Code chunks
+# But first, code chunks
 
 .pull-left[
 
@@ -924,7 +833,7 @@ n_sites
 
 ---
 
-# Code chunks
+# But first, code chunks
 
 .pull-left[
 
@@ -953,7 +862,7 @@ ggplot(mockdata, aes(x = arm,
   geom_col()
 ```
 
-&lt;img src="index_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -979,12 +888,359 @@ interactively (show button)
 whole doc (knit button or run all chunks or )
 ]
 
+
+---
+class: middle, center
+
+# The plots
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-20-1.png" width="25%" /&gt;&lt;img src="index_files/figure-html/unnamed-chunk-20-2.png" width="25%" /&gt;&lt;img src="index_files/figure-html/unnamed-chunk-20-3.png" width="25%" /&gt;&lt;img src="index_files/figure-html/unnamed-chunk-20-4.png" width="25%" /&gt;
+
+---
+
+# Including plots
+
+.pull-left[
+
+```r
+# PLOT: Age distribution -------------------------------------------------------
+ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+```
+
+Will this print?
+
+]
+
+--
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-21-1.png" width="504" /&gt;
+
+]
+
+---
+
+# Including plots
+
+.pull-left[
+
+```r
+# PLOT: Age distribution -------------------------------------------------------
+age_histogram &lt;- 
+  ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+```
+
+What about this?
+
+]
+
+--
+
+.pull-right[
+
+
+]
+
+
+---
+
+# Including plots
+
+.pull-left[
+
+```r
+# PLOT: Age distribution -------------------------------------------------------
+age_histogram &lt;- 
+  ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+age_histogram
+```
+
+]
+
+--
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
+
+]
+
+???
+
+
+so, how did we get a figure into R Markdown?
+
+Answer: it has to print!
+
+---
+
+# Chunk options for plots
+
+- fig resolution
+- fig size
+- [fig "device"](https://r4ds.had.co.nz/graphics-for-communication.html#other-important-options)
+
+.footnote[https://yihui.name/knitr/options/#plots]
+
+---
+
+# out.width
+
+.pull-left[
+
+````
+```{r out.width="70%"}
+age_histogram
+```
+````
+
+&lt;img src="index_files/figure-html/unnamed-chunk-24-1.png" width="70%" /&gt;
+]
+
+--
+
+.pull-right[
+
+````
+```{r out.width="10%"}
+age_histogram
+```
+````
+
+&lt;img src="index_files/figure-html/unnamed-chunk-25-1.png" width="10%" /&gt;
+
+See also:
+
++ `fig.width`
++ `fig.height` 
++ `fig.asp`
+
+https://r4ds.had.co.nz/graphics-for-communication.html#figure-sizing
+
+]
+
+
+---
+
+# fig.cap
+
+For the `ae_pct_plot`, I followed [these recommendations](https://www.bmj.com/content/355/bmj.i5078).
+
+````
+```{r fig.cap="BMJ, 2016 paper", echo=FALSE}
+knitr::include_graphics(here::here("images/F3.large.jpg"))
+```
+````
+
+
+
+&lt;div class="figure"&gt;
+&lt;img src="/Users/alison/rworkshops/rwebinars/rmd4cdc/images/F3.large.jpg" alt="BMJ, 2016 paper" width="35%" /&gt;
+&lt;p class="caption"&gt;BMJ, 2016 paper&lt;/p&gt;
+&lt;/div&gt;
+
+???
+
+This is how you can also add static figures. You could use R Markdown, but with knitr you can also include a figure caption. As you might have noticed in your output, this ends up numbered. 
+
+---
+class: live-code
+
+# Live code demo
+
+We open up `03-draft.Rmd` and take the static image and together we:
+
+1. Label that chunk
+
+1. Add a cross-reference like `see Figure \@ref(fig:bmj)`
+
+1. Try again with `counts-by-site` code chunk: `see Figure \@ref(fig:counts-by-site)` _(watch what happens if try to cross-reference without a caption!)_
+
+.footnote[Cross-referencing only works in these output packages: distill, bookdown, blogdown]
+
+---
+
+# Caption a figure
+
+````
+```{r age-plot, echo=FALSE, fig.cap='Age distributions'}
+age_histogram
+```
+````
+
+.center[
+
+&lt;img src="index_files/figure-html/age-plot-1.png" width="25%" /&gt;
+
+**Fig. 1:** Age distributions
+
+]
+
+
+
+---
+
+# Cross-reference a figure
+
+.pull-left[
+
+See Figure `\@ref(fig:age-plot)`.
+
+````
+```{r age-plot, echo=FALSE, fig.cap='Age distributions'}
+age_histogram
+```
+````
+
+]
+
+.pull-right[
+
+See Figure [1]().
+
+.center[
+
+&lt;div class="figure"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-27-1.png" alt="Age distributions" width="70%" /&gt;
+&lt;p class="caption"&gt;Age distributions&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+]
+
+---
+
+# Key takeaway
+
+Once you have:
+
+✔️ A labeled chunk that produces a plot
+
+✔️ A figure caption using `fig.cap`
+
+Then you can have:
+
+### Cross-references!*
+
+.footnote[\* and you are using distill, bookdown, or blogdown output formats]
+
+---
+
+# fig.path
+
+````
+```{r ae-plot, fig.path="figs/", echo=FALSE}
+ae_pct_plot
+```
+````
+
+&lt;img src="index_files/figure-html/ae-plot-1.png" width="70%" /&gt;
+
+---
+
+# message / warning
+
+
+
+![](https://www.tidyverse.org/images/tidyverse_1.2.0/tidyverse_1-2-0_pkg_load.gif)
+
+
+
+---
+
+# message / warning
+
+.pull-left[
+
+````
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+````
+
+]
+
+.pull-right[
+
+
+```r
+library(tidyverse)
+```
+
+]
+---
+
+# A global `setup` chunk 🌍
+
+One chunk to rule them all
+
+.pull-left[
+
+````
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  fig.path = "alison-figs/"
+)
+```
+````
+
+]
+
+.pull-right[
+
++ A special chunk label: `setup`
+
++ Typically the first chunk
+
++ All following chunks will use these options (i.e., sets global chunk options)
+
++ **Tip**: set `include=FALSE`
+
++ You can (and should) use individual chunk options too
+
+]
+
 ---
 class: inverse, center, middle
 
 &lt;span class="fa-stack fa-4x"&gt;
   &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;3 &lt;/strong&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;2 &lt;/strong&gt;
 &lt;/span&gt; 
 
 --
@@ -1010,13 +1266,34 @@ glimpse(mockdata)
 
 ```r
 glimpse(mockdata)
-#&gt; Rows: 3
-#&gt; Columns: 5
-#&gt; $ arm      &lt;chr&gt; "A: IFL", "F: FOLFOX", "G: IROX"
-#&gt; $ site     &lt;chr&gt; "Boston", "Boston", "Boston"
-#&gt; $ country  &lt;chr&gt; "USA", "USA", "USA"
-#&gt; $ n_target &lt;dbl&gt; 34, 34, 34
-#&gt; $ n        &lt;dbl&gt; 20, 13, 17
+#&gt; Rows: 1,499
+#&gt; Columns: 26
+#&gt; $ case          &lt;dbl&gt; 110754, 99706, 105271, 105001, 112263, 86205, 99508, 90…
+#&gt; $ age           &lt;dbl&gt; 67, 74, 50, 71, 69, 56, 50, 57, 51, 63, 61, 59, 61, 59,…
+#&gt; $ arm           &lt;chr&gt; "F: FOLFOX", "A: IFL", "A: IFL", "G: IROX", "F: FOLFOX"…
+#&gt; $ sex           &lt;chr&gt; "Male", "Female", "Female", "Female", "Female", "Male",…
+#&gt; $ race          &lt;chr&gt; "Caucasian", "Caucasian", "Caucasian", "Caucasian", "Ot…
+#&gt; $ fu_time       &lt;dbl&gt; 922, 270, 175, 128, 233, 120, 369, 421, 387, 363, 168, …
+#&gt; $ fu_stat       &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2…
+#&gt; $ ps            &lt;dbl&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0…
+#&gt; $ hgb           &lt;dbl&gt; 11.5, 10.7, 11.1, 12.6, 13.0, 10.2, 13.3, 12.1, 13.8, 1…
+#&gt; $ bmi           &lt;dbl&gt; 25.09861, 19.49786, NA, 29.42922, 26.35352, 19.03673, 2…
+#&gt; $ alk_phos      &lt;dbl&gt; 160, 290, 700, 771, 350, 569, 162, 152, 231, 492, 740, …
+#&gt; $ ast           &lt;dbl&gt; 35, 52, 100, 68, 35, 27, 16, 12, 25, 18, 45, 16, 50, 80…
+#&gt; $ mdquality_s   &lt;dbl&gt; NA, 1, 1, 1, NA, 1, 1, 1, 1, 1, NA, NA, 1, 0, 1, 1, 0, …
+#&gt; $ age_ord       &lt;chr&gt; "60-69", "70-79", "40-49", "70-79", "60-69", "50-59", "…
+#&gt; $ site          &lt;chr&gt; "Portland", "Portland", "Portland", "Portland", "Portla…
+#&gt; $ country       &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA",…
+#&gt; $ ethnicity     &lt;chr&gt; "White (not Hispanic)", "White (not Hispanic)", "White …
+#&gt; $ name          &lt;chr&gt; "Barrett Wafford", "Shelby Moore", "Farrah Morgan", "Br…
+#&gt; $ first_name    &lt;chr&gt; "Barrett", "Shelby", "Farrah", "Brianna", "Kareema", "J…
+#&gt; $ last_name     &lt;chr&gt; "Wafford", "Moore", "Morgan", "Rasico", "el-Saleh", "Pi…
+#&gt; $ ae_low_wbc    &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ ae_neuropathy &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ ae_diarrhea   &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ ae_vomiting   &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ ae_blood_clot &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ fu_fct        &lt;fct&gt; Died, Died, Died, Died, Died, Died, Died, Died, Died, D…
 ```
 
 ]
@@ -1039,13 +1316,34 @@ glimpse(mockdata)
 
 
 ```
-#&gt; Rows: 3
-#&gt; Columns: 5
-#&gt; $ arm      &lt;chr&gt; "A: IFL", "F: FOLFOX", "G: IROX"
-#&gt; $ site     &lt;chr&gt; "Boston", "Boston", "Boston"
-#&gt; $ country  &lt;chr&gt; "USA", "USA", "USA"
-#&gt; $ n_target &lt;dbl&gt; 34, 34, 34
-#&gt; $ n        &lt;dbl&gt; 20, 13, 17
+#&gt; Rows: 1,499
+#&gt; Columns: 26
+#&gt; $ case          &lt;dbl&gt; 110754, 99706, 105271, 105001, 112263, 86205, 99508, 90…
+#&gt; $ age           &lt;dbl&gt; 67, 74, 50, 71, 69, 56, 50, 57, 51, 63, 61, 59, 61, 59,…
+#&gt; $ arm           &lt;chr&gt; "F: FOLFOX", "A: IFL", "A: IFL", "G: IROX", "F: FOLFOX"…
+#&gt; $ sex           &lt;chr&gt; "Male", "Female", "Female", "Female", "Female", "Male",…
+#&gt; $ race          &lt;chr&gt; "Caucasian", "Caucasian", "Caucasian", "Caucasian", "Ot…
+#&gt; $ fu_time       &lt;dbl&gt; 922, 270, 175, 128, 233, 120, 369, 421, 387, 363, 168, …
+#&gt; $ fu_stat       &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2…
+#&gt; $ ps            &lt;dbl&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0…
+#&gt; $ hgb           &lt;dbl&gt; 11.5, 10.7, 11.1, 12.6, 13.0, 10.2, 13.3, 12.1, 13.8, 1…
+#&gt; $ bmi           &lt;dbl&gt; 25.09861, 19.49786, NA, 29.42922, 26.35352, 19.03673, 2…
+#&gt; $ alk_phos      &lt;dbl&gt; 160, 290, 700, 771, 350, 569, 162, 152, 231, 492, 740, …
+#&gt; $ ast           &lt;dbl&gt; 35, 52, 100, 68, 35, 27, 16, 12, 25, 18, 45, 16, 50, 80…
+#&gt; $ mdquality_s   &lt;dbl&gt; NA, 1, 1, 1, NA, 1, 1, 1, 1, 1, NA, NA, 1, 0, 1, 1, 0, …
+#&gt; $ age_ord       &lt;chr&gt; "60-69", "70-79", "40-49", "70-79", "60-69", "50-59", "…
+#&gt; $ site          &lt;chr&gt; "Portland", "Portland", "Portland", "Portland", "Portla…
+#&gt; $ country       &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA",…
+#&gt; $ ethnicity     &lt;chr&gt; "White (not Hispanic)", "White (not Hispanic)", "White …
+#&gt; $ name          &lt;chr&gt; "Barrett Wafford", "Shelby Moore", "Farrah Morgan", "Br…
+#&gt; $ first_name    &lt;chr&gt; "Barrett", "Shelby", "Farrah", "Brianna", "Kareema", "J…
+#&gt; $ last_name     &lt;chr&gt; "Wafford", "Moore", "Morgan", "Rasico", "el-Saleh", "Pi…
+#&gt; $ ae_low_wbc    &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ ae_neuropathy &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ ae_diarrhea   &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ ae_vomiting   &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ ae_blood_clot &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ fu_fct        &lt;fct&gt; Died, Died, Died, Died, Died, Died, Died, Died, Died, D…
 ```
 
 ]
@@ -1236,7 +1534,7 @@ show how to add chunk labels and view in IDE interactively
 ---
 class: middle, center
 
-# Pet or livestock?
+# Crop or houseplant?
 
 .footnote[https://masalmon.eu/2017/08/08/chunkpets/]
 
@@ -1249,13 +1547,15 @@ class: middle, center
 
 ### Good
 
-`myplot`
-
 `my-plot`
 
-`myPlot`
+`myplot`
 
 `myplot1`
+
+`myplot-1`
+
+`MY-PLOT`
 
 ]
 
@@ -1271,65 +1571,1032 @@ everything else!
 
 ]
 
+
 ---
+class: middle, center, inverse
 
-# The setup chunk
+# Tables
 
+![](https://media.giphy.com/media/i9c6lFmOSXKZW/giphy.gif)
+
+---
+class: middle, center, inverse
+
+&lt;span class="fa-stack fa-4x"&gt;
+  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;3 &lt;/strong&gt;
+&lt;/span&gt; 
+
+--
+
+# Custom typed tables
+
+
+---
+class: center
+
+# Markdown tables
+
+.pull-left[
+
+```markdown
+| Time          | Session | Topic    |
+|:--------------|:-------:|---------:|
+| _left_        | _center_| _right_  |
+| 01:00 - 01:50 | 1       | Anatomy  |
+| 01:50 - 02:00 |         | *Break*  |
+| 02:00 - 02:45 | 2       | Tables   |
+| 02:45 - 03:00 |         | *Break*  |
+
+```
+]
+
+--
+
+.pull-right[
+
+| Time          | Session | Topic    |
+|:--------------|:-------:|---------:|
+| _left_        | _center_| _right_  |
+| 01:00 - 01:50 | 1       | Anatomy  |
+| 01:50 - 02:00 |         | *Break*  |
+| 02:00 - 02:45 | 2       | Tables   |
+| 02:45 - 03:00 |         | *Break*  |
+
+]
+
+---
+class: center, middle
+
+# Two table types
 
 
 .pull-left[
 
-````
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,   
-  comment = "#&gt;", 
-  out.width = "100%" 
-)
-```
-````
+### for you
+
+&lt;img src="images/tables-you.jpg" width="3691" /&gt;
+
 
 ]
+
+--
 
 .pull-right[
 
-+ A special chunk label: `setup`
+### for everyone else
 
-+ Typically the first chunk
+&lt;img src="images/tables-them.jpg" width="3691" /&gt;
+]
 
-+ All following chunks will use these options (i.e., sets global chunk options)
+---
 
-+ **Tip**: set `include=FALSE`
+.pull-left[
 
-+ You can (and should) use individual chunk options too
+![](images/imani-_TuIdedBPwQ-unsplash.jpg)
+]
+
+.pull-right[
+![](images/gear_shift.jpg)
+]
+
+.footnote[Images from [Unsplash](https://unsplash.com/photos/_TuIdedBPwQ) and [Wikipedia](https://commons.wikimedia.org/wiki/File:FIAT_500L_gear_shift.jpg)]
+
+---
+class: middle, center, inverse
+
+&lt;span class="fa-stack fa-4x"&gt;
+  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;4 &lt;/strong&gt;
+&lt;/span&gt; 
+
+--
+
+# Tables for You (EDA)
+
+---
+
+# Let's try using data now
+
+
+```r
+mockdata &lt;- read_csv(here::here("mockpaper/data/mockdata.csv")) %&gt;%
+  mutate(fu_fct = fct_recode(as.factor(fu_stat), 
+                             "Lived" = "1", 
+                             "Died" = "2")) %&gt;% 
+  mutate_at(vars(starts_with("ae_")), ~as.factor(.))
+#&gt; Parsed with column specification:
+#&gt; cols(
+#&gt;   .default = col_double(),
+#&gt;   arm = col_character(),
+#&gt;   sex = col_character(),
+#&gt;   race = col_character(),
+#&gt;   age_ord = col_character(),
+#&gt;   site = col_character(),
+#&gt;   country = col_character(),
+#&gt;   ethnicity = col_character(),
+#&gt;   name = col_character(),
+#&gt;   first_name = col_character(),
+#&gt;   last_name = col_character()
+#&gt; )
+#&gt; See spec(...) for full column specifications.
+```
+
+---
+
+# EDA tables: `janitor`
+
+Good for 1- and 2-way frequency tables with categorical variables
+
+Count number of participants by `arm`, then add by status (`fu_fct`) too
+
+.pull-left[
+
+
+```r
+mockdata %&gt;% 
+  tabyl(arm)
+#&gt;        arm   n   percent
+#&gt;     A: IFL 428 0.2855237
+#&gt;  F: FOLFOX 691 0.4609740
+#&gt;    G: IROX 380 0.2535023
+```
+
+] 
+
+--
+
+.pull-right[
+
+
+```r
+mockdata %&gt;% 
+  tabyl(arm) %&gt;% 
+  adorn_totals("row") %&gt;%
+  adorn_pct_formatting()
+#&gt;        arm    n percent
+#&gt;     A: IFL  428   28.6%
+#&gt;  F: FOLFOX  691   46.1%
+#&gt;    G: IROX  380   25.4%
+#&gt;      Total 1499  100.0%
+```
 
 ]
+
+---
+
+.pull-left[
+
+````
+```{r}
+mockdata %&gt;% 
+  tabyl(arm, fu_fct) %&gt;%
+  gt::gt()
+```
+````
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#aglsjbuoli .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+}
+
+#aglsjbuoli .gt_heading {
+  background-color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+  border-left-style: hidden;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: hidden;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aglsjbuoli .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#aglsjbuoli .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#aglsjbuoli .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aglsjbuoli .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aglsjbuoli .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  vertical-align: bottom;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#aglsjbuoli .gt_column_spanner {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  vertical-align: bottom;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 97%;
+}
+
+#aglsjbuoli .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aglsjbuoli .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aglsjbuoli .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#aglsjbuoli .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#aglsjbuoli .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#aglsjbuoli .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#aglsjbuoli .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#aglsjbuoli .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aglsjbuoli .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#aglsjbuoli .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aglsjbuoli .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#aglsjbuoli .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aglsjbuoli .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aglsjbuoli .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#aglsjbuoli .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aglsjbuoli .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#aglsjbuoli .gt_left {
+  text-align: left;
+}
+
+#aglsjbuoli .gt_center {
+  text-align: center;
+}
+
+#aglsjbuoli .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#aglsjbuoli .gt_font_normal {
+  font-weight: normal;
+}
+
+#aglsjbuoli .gt_font_bold {
+  font-weight: bold;
+}
+
+#aglsjbuoli .gt_font_italic {
+  font-style: italic;
+}
+
+#aglsjbuoli .gt_super {
+  font-size: 65%;
+}
+
+#aglsjbuoli .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="aglsjbuoli" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">arm</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Lived</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Died</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">A: IFL</td>
+      <td class="gt_row gt_right">18</td>
+      <td class="gt_row gt_right">410</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">F: FOLFOX</td>
+      <td class="gt_row gt_right gt_striped">99</td>
+      <td class="gt_row gt_right gt_striped">592</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">G: IROX</td>
+      <td class="gt_row gt_right">26</td>
+      <td class="gt_row gt_right">354</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+
+] 
+
+--
+
+.pull-right[
+
+````
+```{r}
+mockdata %&gt;% 
+  tabyl(arm, fu_fct) %&gt;% 
+  adorn_totals("row") %&gt;%
+  adorn_percentages("row") %&gt;%
+  adorn_pct_formatting(digits = 2) %&gt;%
+  adorn_ns() %&gt;%
+  gt::gt()
+```
+````
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#tsoinfrqdp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+}
+
+#tsoinfrqdp .gt_heading {
+  background-color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+  border-left-style: hidden;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: hidden;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tsoinfrqdp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tsoinfrqdp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tsoinfrqdp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tsoinfrqdp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tsoinfrqdp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  vertical-align: bottom;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tsoinfrqdp .gt_column_spanner {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  vertical-align: bottom;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 97%;
+}
+
+#tsoinfrqdp .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tsoinfrqdp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tsoinfrqdp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tsoinfrqdp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tsoinfrqdp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tsoinfrqdp .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tsoinfrqdp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#tsoinfrqdp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsoinfrqdp .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#tsoinfrqdp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsoinfrqdp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tsoinfrqdp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tsoinfrqdp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tsoinfrqdp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tsoinfrqdp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tsoinfrqdp .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tsoinfrqdp .gt_left {
+  text-align: left;
+}
+
+#tsoinfrqdp .gt_center {
+  text-align: center;
+}
+
+#tsoinfrqdp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tsoinfrqdp .gt_font_normal {
+  font-weight: normal;
+}
+
+#tsoinfrqdp .gt_font_bold {
+  font-weight: bold;
+}
+
+#tsoinfrqdp .gt_font_italic {
+  font-style: italic;
+}
+
+#tsoinfrqdp .gt_super {
+  font-size: 65%;
+}
+
+#tsoinfrqdp .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="tsoinfrqdp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">arm</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Lived</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Died</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">A: IFL</td>
+      <td class="gt_row gt_left">4.21%  (18)</td>
+      <td class="gt_row gt_left">95.79%  (410)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">F: FOLFOX</td>
+      <td class="gt_row gt_left gt_striped">14.33%  (99)</td>
+      <td class="gt_row gt_left gt_striped">85.67%  (592)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">G: IROX</td>
+      <td class="gt_row gt_left">6.84%  (26)</td>
+      <td class="gt_row gt_left">93.16%  (354)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">Total</td>
+      <td class="gt_row gt_left gt_striped">9.54% (143)</td>
+      <td class="gt_row gt_left gt_striped">90.46% (1356)</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+
+]
+
+---
+class: middle, center, inverse
+
+&lt;span class="fa-stack fa-4x"&gt;
+  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;5 &lt;/strong&gt;
+&lt;/span&gt; 
+
+--
+
+# Table One
+
+---
+
+# Table One from `arsenal`
+
+
+
+```r
+tableby(arm ~ sex, data = mockdata) 
+#&gt; tableby Object
+#&gt; 
+#&gt; Function Call:
+#&gt; tableby(formula = arm ~ sex, data = mockdata)
+#&gt; 
+#&gt; Variable(s):
+#&gt; arm ~ sex
+```
+
+--
+
+
+
+```r
+tableby(arm ~ sex, data = mockdata) %&gt;% 
+  summary()
+#&gt; 
+#&gt; 
+#&gt; |                         | A: IFL (N=428) | F: FOLFOX (N=691) | G: IROX (N=380) | Total (N=1499) | p value|
+#&gt; |:------------------------|:--------------:|:-----------------:|:---------------:|:--------------:|-------:|
+#&gt; |**sex**                  |                |                   |                 |                |   0.190|
+#&gt; |&amp;nbsp;&amp;nbsp;&amp;nbsp;Female |  151 (35.3%)   |    280 (40.5%)    |   152 (40.0%)   |  583 (38.9%)   |        |
+#&gt; |&amp;nbsp;&amp;nbsp;&amp;nbsp;Male   |  277 (64.7%)   |    411 (59.5%)    |   228 (60.0%)   |  916 (61.1%)   |        |
+```
+
+
+---
+
+# One more step!
+
+For R Markdown pretty printing...
+
+````
+```{r results='asis'}
+tableby(arm ~ sex, data = mockdata) %&gt;% 
+  summary()
+```
+````
+
+
+|                         | A: IFL (N=428) | F: FOLFOX (N=691) | G: IROX (N=380) | Total (N=1499) | p value|
+|:------------------------|:--------------:|:-----------------:|:---------------:|:--------------:|-------:|
+|**sex**                  |                |                   |                 |                |   0.190|
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;Female |  151 (35.3%)   |    280 (40.5%)    |   152 (40.0%)   |  583 (38.9%)   |        |
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;Male   |  277 (64.7%)   |    411 (59.5%)    |   228 (60.0%)   |  916 (61.1%)   |        |
+
+???
+
+This is a new knitr chunk option- the results option.
+
+
+
+---
+class: middle, center, inverse
+
+&lt;span class="fa-stack fa-4x"&gt;
+  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;6 &lt;/strong&gt;
+&lt;/span&gt; 
+
+--
+
+# Table Two
 
 ---
 class: your-turn
 
 # Your turn
 
-## New data dump! 📰
+## Table two
 
-Data from more sites just came in &amp;mdash; we now have data for Boston, Seattle, and Denver.
+Find this section:
+```
+&lt;--TODO: add adverse events table--&gt;
+```
 
-1. Replace `mockboston` in the file `mockbsd`. 
+1. Find the code chunk started for you. 
 
-1. 🧶 **Knit** to HTML. Do you see data for all 3 sites?
+1. Code and print a table called `ae_tab` that summarizes 2+ variables that start with `ae_`.
 
-1. Clean up the chunks (split, combine, label, use options as you see fit)
+__If this was easy__, edit the `summary()` function to modify the number of [digits](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#modify-the-number-of-digits-used). Or add [labels](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#add-labels).
 
-1. Use the RStudio outline pane; rejoice!
+_psst...answers on next slide..._
 
-**If this was easy**, try to use a parameter for the data file.
-
-_psst...`01-explore-alison-params.Rmd` is still there..._
-
-
-<div class="countdown" id="timer_5ebb48f6" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5ebb7733" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
+
+---
+class: your-turn
+
+# Answer
+
+````
+```{r results='asis', layout="l-body-outset"}
+ae_tab &lt;- mockdata %&gt;% 
+  tableby(
+    arm ~ ae_blood_clot + ae_vomiting + ae_diarrhea + ae_neuropathy + ae_low_wbc, 
+    data = .) %&gt;% 
+  summary(digits = 2, 
+          digits.p = 3, 
+          digits.pct = 1)
+ae_tab
+```
+````
+
+---
+
+
+|                    | A: IFL (N=428) | F: FOLFOX (N=691) | G: IROX (N=380) | Total (N=1499) | p value|
+|:-------------------|:--------------:|:-----------------:|:---------------:|:--------------:|-------:|
+|**ae_blood_clot**   |                |                   |                 |                |   0.742|
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  411 (96.0%)   |    658 (95.2%)    |   365 (96.1%)   |  1434 (95.7%)  |        |
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   17 (4.0%)    |     33 (4.8%)     |    15 (3.9%)    |   65 (4.3%)    |        |
+|**ae_vomiting**     |                |                   |                 |                |   0.006|
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  339 (79.2%)   |    571 (82.6%)    |   333 (87.6%)   |  1243 (82.9%)  |        |
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   89 (20.8%)   |    120 (17.4%)    |   47 (12.4%)    |  256 (17.1%)   |        |
+|**ae_diarrhea**     |                |                   |                 |                |   0.001|
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  339 (79.2%)   |    546 (79.0%)    |   333 (87.6%)   |  1218 (81.3%)  |        |
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   89 (20.8%)   |    145 (21.0%)    |   47 (12.4%)    |  281 (18.7%)   |        |
+|**ae_neuropathy**   |                |                   |                 |                | &lt; 0.001|
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  354 (82.7%)   |    580 (83.9%)    |   347 (91.3%)   |  1281 (85.5%)  |        |
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   74 (17.3%)   |    111 (16.1%)    |    33 (8.7%)    |  218 (14.5%)   |        |
+|**ae_low_wbc**      |                |                   |                 |                | &lt; 0.001|
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  354 (82.7%)   |    551 (79.7%)    |   347 (91.3%)   |  1252 (83.5%)  |        |
+|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   74 (17.3%)   |    140 (20.3%)    |    33 (8.7%)    |  247 (16.5%)   |        |
+
 
 ---
 class: middle, center
@@ -1365,7 +2632,6 @@ class: middle, center
 🧶 early, 🧶 often
 
 
----
 
 
 ---
@@ -1490,7 +2756,7 @@ class: your-turn
 
 _psst: answers on next slide..._
 
-<div class="countdown" id="timer_5ebb4746" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5ebb77fb" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1536,1556 +2802,11 @@ Answer the following questions:
 
 1. Anything in the output (or not in the output) surprise you?
 
-<div class="countdown" id="timer_5ebb4641" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
----
-template: card0
-
----
-template: card1
-
----
-template: card2
-
----
-background-image: url(images/card3.png)
-background-size: contain
-
----
-class: middle, center
-
-# The line-up
-
-&lt;img src="index_files/figure-html/unnamed-chunk-36-1.png" width="25%" /&gt;&lt;img src="index_files/figure-html/unnamed-chunk-36-2.png" width="25%" /&gt;&lt;img src="index_files/figure-html/unnamed-chunk-36-3.png" width="25%" /&gt;&lt;img src="index_files/figure-html/unnamed-chunk-36-4.png" width="25%" /&gt;
-
----
-
-# Including plots
-
-.pull-left[
-
-```r
-# PLOT: Age distribution -------------------------------------------------------
-ggplot(mockdata, aes(age)) +
-  geom_histogram(color = 'white',
-                 fill = scico(1, 
-                              begin = .3, 
-                              palette = "berlin"),
-                 bins = 20) +
-  labs(x = "Age", 
-       y = "Count") +
-  scale_y_continuous(
-    breaks = scales::pretty_breaks()
-  )
-```
-
-Will this print?
-
-]
-
---
-
-.pull-right[
-![](index_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
-
-]
-
----
-
-# Including plots
-
-.pull-left[
-
-```r
-# PLOT: Age distribution -------------------------------------------------------
-age_histogram &lt;- 
-  ggplot(mockdata, aes(age)) +
-  geom_histogram(color = 'white',
-                 fill = scico(1, 
-                              begin = .3, 
-                              palette = "berlin"),
-                 bins = 20) +
-  labs(x = "Age", 
-       y = "Count") +
-  scale_y_continuous(
-    breaks = scales::pretty_breaks()
-  )
-```
-
-What about this?
-
-]
-
---
-
-.pull-right[
-
-
-]
-
-
----
-
-# Including plots
-
-.pull-left[
-
-```r
-# PLOT: Age distribution -------------------------------------------------------
-age_histogram &lt;- 
-  ggplot(mockdata, aes(age)) +
-  geom_histogram(color = 'white',
-                 fill = scico(1, 
-                              begin = .3, 
-                              palette = "berlin"),
-                 bins = 20) +
-  labs(x = "Age", 
-       y = "Count") +
-  scale_y_continuous(
-    breaks = scales::pretty_breaks()
-  )
-age_histogram
-```
-
-]
-
---
-
-.pull-right[
-![](index_files/figure-html/unnamed-chunk-39-1.png)&lt;!-- --&gt;
-
-]
-
-???
-
-
-so, how did we get a figure into R Markdown?
-
-Answer: it has to print!
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;4 &lt;/strong&gt;
-&lt;/span&gt; 
-
-# Chunk options for plots
-
----
-
-# Chunk options for plots
-
-- fig resolution
-- fig size
-- [fig "device"](https://r4ds.had.co.nz/graphics-for-communication.html#other-important-options)
-
-.footnote[https://yihui.name/knitr/options/#plots]
-
-
----
-
-# Figure resolution
-
-.pull-left[
-
-
-```r
-# PLOT: Age distribution -------------------------------------------------------
-age_histogram &lt;- 
-  ggplot(mockdata, aes(age)) +
-  geom_histogram(color = 'white',
-                 fill = scico(1, 
-                              begin = .3, 
-                              palette = "berlin"),
-                 bins = 20) +
-  labs(x = "Age", 
-       y = "Count") +
-  scale_y_continuous(
-    breaks = scales::pretty_breaks()
-  )
-age_histogram
-```
-
-]
-
-.pull-right[
-![](index_files/figure-html/unnamed-chunk-41-1.png)&lt;!-- --&gt;
-
-]
-
----
-
-# fig.retina
-
-.pull-left[
-
-````
-```{r}
-age_histogram
-```
-````
-
-&lt;img src="index_files/figure-html/unnamed-chunk-42-1.png" width="70%" /&gt;
-]
-
---
-
-.pull-right[
-
-````
-```{r fig.retina=3}
-age_histogram
-```
-````
-
-&lt;img src="index_files/figure-html/unnamed-chunk-43-1.png" width="70%" /&gt;
-]
-
----
-
-# out.width
-
-.pull-left[
-
-````
-```{r fig.retina=3, out.width="70%"}
-age_histogram
-```
-````
-
-&lt;img src="index_files/figure-html/unnamed-chunk-44-1.png" width="70%" /&gt;
-]
-
---
-
-.pull-right[
-
-````
-```{r fig.retina=3, out.width="10%"}
-age_histogram
-```
-````
-
-&lt;img src="index_files/figure-html/unnamed-chunk-45-1.png" width="10%" /&gt;
-
-See also:
-
-+ `fig.width`
-+ `fig.height` 
-+ `fig.asp`
-
-https://r4ds.had.co.nz/graphics-for-communication.html#figure-sizing
-
-]
-
-
----
-
-# fig.cap
-
-For the `ae_pct_plot`, I followed [these recommendations](https://www.bmj.com/content/355/bmj.i5078).
-
-````
-```{r fig.cap="BMJ, 2016 paper", echo=FALSE}
-knitr::include_graphics(here::here("images/F3.large.jpg"))
-```
-````
-
-
-
-&lt;div class="figure"&gt;
-&lt;img src="/Users/alison/rworkshops/rwebinars/rmd4cdc/images/F3.large.jpg" alt="BMJ, 2016 paper" width="25%" /&gt;
-&lt;p class="caption"&gt;BMJ, 2016 paper&lt;/p&gt;
-&lt;/div&gt;
-
-???
-
-This is how you can also add static figures. You could use R Markdown, but with knitr you can also include a figure caption. As you might have noticed in your output, this ends up numbered. 
-
----
-class: live-code
-
-# Live code demo
-
-We open up `03-draft.Rmd` and take the static image and together we:
-
-1. Label that chunk
-
-1. Add a cross-reference like `see Figure \@ref(fig:bmj)`
-
-1. Try again with `counts-by-site` code chunk: `see Figure \@ref(fig:counts-by-site)` _(watch what happens if try to cross-reference without a caption!)_
-
-.footnote[Cross-referencing only works in these output packages: distill, bookdown, blogdown]
-
----
-
-# Caption a figure
-
-````
-```{r age-plot, echo=FALSE, fig.cap='Age distributions'}
-age_histogram
-```
-````
-
-.center[
-
-&lt;img src="index_files/figure-html/age-plot-1.png" width="25%" /&gt;
-
-**Fig. 1:** Age distributions
-
-]
-
-
-
----
-
-# Cross-reference a figure
-
-.pull-left[
-
-See Figure `\@ref(fig:age-plot)`.
-
-````
-```{r age-plot, echo=FALSE, fig.cap='Age distributions'}
-age_histogram
-```
-````
-
-]
-
-.pull-right[
-
-See Figure [1]().
-
-.center[
-
-&lt;div class="figure"&gt;
-&lt;img src="index_files/figure-html/unnamed-chunk-47-1.png" alt="Age distributions" width="70%" /&gt;
-&lt;p class="caption"&gt;Age distributions&lt;/p&gt;
-&lt;/div&gt;
-
-]
-
-]
-
----
-
-# Key takeaway
-
-Once you have:
-
-✔️ A labeled chunk that produces a plot
-
-✔️ A figure caption using `fig.cap`
-
-Then you can have:
-
-### Cross-references!*
-
-.footnote[\* and you are using distill, bookdown, or blogdown output formats]
-
----
-class: your-turn
-
-# Your turn: Part 2 of 2
-
-Now go through `03-draft-revised.Rmd` and read the source, then knit.
-
-.pull-left[
-
-
-```r
-# demographics-----------------------------
-age_density # multi-panel?    &lt;-ignore this
-age_boxplot # multi-panel?    &lt;-ignore this
-demo_tab
-
-# treatment response @ follow-up-----------
-surv_pct_plot # multi-panel?  &lt;-ignore this
-surv_days_plot # multi-panel? &lt;-ignore this
-fu_tab
-
-# adverse events---------------------------
-ae_pct_plot
-ae_tab
-```
-]
-
-.pull-right[
-1. Add new code chunks containing tables and plots where you want.
-
-1. Edit the code chunk options as you need to.
-
-1. Add headers and other Markdown formatting as you see fit.
-
-1. Feel free to add figure captions and in text cross-references.
-]
-
-<div class="countdown" id="timer_5ebb47e4" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5ebb784c" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;5 &lt;/strong&gt;
-&lt;/span&gt; 
-
-
-# Combine figures in output
-
----
-
-# Arrange plots in a grid
-
-
-`cowplot::plot_grid()` for multi-panel plots
-
-.footnote[https://wilkelab.org/cowplot/articles/plot_grid.html]
-
----
-class: live-code
-
-# Live code demo
-
-We start with `03-draft-revised.Rmd` and combine `age_density` and `age_boxplot` with the `cowplot` package.
-
-
-```r
-plot_grid(age_density, age_boxplot, labels = "AUTO")
-```
-
-&lt;img src="index_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" /&gt;
-
-
----
-class: your-turn
-
-# Your turn
-
-## Make a plot grid
-
-Open up your `03-draft-revised.Rmd`.
-
-Combine `surv_pct_plot` and `surv_days_plot` with `cowplot::plot_grid()`.
-
-
-_psst...my answers on the next slide..._
-
-<div class="countdown" id="timer_5ebb46bc" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
----
-class: your-turn
-
-# Answers
-
-````
-```{r echo=FALSE, fig.retina=3, fig.asp=.5, fig.width=20}
-plot_grid(surv_pct_plot, surv_days_plot, labels = "AUTO")
-```
-````
-
-&lt;img src="index_files/figure-html/unnamed-chunk-52-1.png" width="720" style="display: block; margin: auto;" /&gt;
-
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;6 &lt;/strong&gt;
-&lt;/span&gt; 
-
-# Get figures out
-
----
-
-# Exporting plots
-
-
-```r
-ggsave()
-```
-
-
----
-
-# fig.path
-
-````
-```{r ae-plot, fig.path="figs/", echo=FALSE}
-ae_pct_plot
-```
-````
-
-&lt;img src="index_files/figure-html/ae-plot-1.png" width="70%" /&gt;
-
-
----
-class: live-code
-
-# Live code demo
-
-We open up `03-draft-revised.Rmd` and together we:
-
-1. Add `fig.path="figs/"` as a `knitr` code chunk option for a single plot _(watch what happens if we don't include the backslash!)_
-
-1. Knit and behold
-
-1. We add a global `setup` chunk, if we have time.
-
----
-class: live-code
-
-# A global `setup` chunk
-
-One chunk to rule them all
-
-````
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  warning = FALSE,
-  message = FALSE,
-  echo = FALSE,
-  fig.retina = 3,
-  fig.path = here::here("alison-figs/")
-)
-```
-````
-
----
-class: middle, center, inverse
-
-# Tables
-
-![](https://media.giphy.com/media/i9c6lFmOSXKZW/giphy.gif)
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;7 &lt;/strong&gt;
-&lt;/span&gt; 
-
---
-
-# Custom typed tables
-
-
----
-class: center
-
-# Markdown tables
-
-.pull-left[
-
-```markdown
-| Time          | Session | Topic    |
-|:--------------|:-------:|---------:|
-| _left_        | _center_| _right_  |
-| 01:00 - 01:50 | 1       | Anatomy  |
-| 01:50 - 02:00 |         | *Break*  |
-| 02:00 - 02:45 | 2       | Tables   |
-| 02:45 - 03:00 |         | *Break*  |
-
-```
-]
-
---
-
-.pull-right[
-
-| Time          | Session | Topic    |
-|:--------------|:-------:|---------:|
-| _left_        | _center_| _right_  |
-| 01:00 - 01:50 | 1       | Anatomy  |
-| 01:50 - 02:00 |         | *Break*  |
-| 02:00 - 02:45 | 2       | Tables   |
-| 02:45 - 03:00 |         | *Break*  |
-
-]
-
----
-class: center, middle
-
-# Two table types
-
-
-.pull-left[
-
-### for you
-
-&lt;img src="images/tables-you.jpg" width="3691" /&gt;
-
-
-]
-
---
-
-.pull-right[
-
-### for everyone else
-
-&lt;img src="images/tables-them.jpg" width="3691" /&gt;
-]
-
----
-
-.pull-left[
-
-![](images/imani-_TuIdedBPwQ-unsplash.jpg)
-]
-
-.pull-right[
-![](images/gear_shift.jpg)
-]
-
-.footnote[Images from [Unsplash](https://unsplash.com/photos/_TuIdedBPwQ) and [Wikipedia](https://commons.wikimedia.org/wiki/File:FIAT_500L_gear_shift.jpg)]
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;8 &lt;/strong&gt;
-&lt;/span&gt; 
-
---
-
-# Tables for You (EDA)
-
----
-
-# Let's try using data now
-
-
-```r
-mockdata &lt;- read_csv(here::here("mockpaper/data/mockdata.csv")) %&gt;%
-  mutate(fu_fct = fct_recode(as.factor(fu_stat), 
-                             "Lived" = "1", 
-                             "Died" = "2")) %&gt;% 
-  mutate_at(vars(starts_with("ae_")), ~as.factor(.))
-#&gt; Parsed with column specification:
-#&gt; cols(
-#&gt;   .default = col_double(),
-#&gt;   arm = col_character(),
-#&gt;   sex = col_character(),
-#&gt;   race = col_character(),
-#&gt;   age_ord = col_character(),
-#&gt;   site = col_character(),
-#&gt;   country = col_character(),
-#&gt;   ethnicity = col_character(),
-#&gt;   name = col_character(),
-#&gt;   first_name = col_character(),
-#&gt;   last_name = col_character()
-#&gt; )
-#&gt; See spec(...) for full column specifications.
-```
-
----
-
-# EDA tables: `janitor`
-
-Good for 1- and 2-way frequency tables with categorical variables
-
-Count number of participants by `arm`, then add by status (`fu_fct`) too
-
-.pull-left[
-
-
-```r
-mockdata %&gt;% 
-  tabyl(arm)
-#&gt;        arm   n   percent
-#&gt;     A: IFL 428 0.2855237
-#&gt;  F: FOLFOX 691 0.4609740
-#&gt;    G: IROX 380 0.2535023
-```
-
-] 
-
---
-
-.pull-right[
-
-
-```r
-mockdata %&gt;% 
-  tabyl(arm) %&gt;% 
-  adorn_totals("row") %&gt;%
-  adorn_pct_formatting()
-#&gt;        arm    n percent
-#&gt;     A: IFL  428   28.6%
-#&gt;  F: FOLFOX  691   46.1%
-#&gt;    G: IROX  380   25.4%
-#&gt;      Total 1499  100.0%
-```
-
-]
-
----
-
-.pull-left[
-
-````
-```{r}
-mockdata %&gt;% 
-  tabyl(arm, fu_fct) %&gt;%
-  gt::gt()
-```
-````
-
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
-
-#xlxrxbegmm .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-}
-
-#xlxrxbegmm .gt_heading {
-  background-color: #FFFFFF;
-  border-bottom-color: #FFFFFF;
-  border-left-style: hidden;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: hidden;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#xlxrxbegmm .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#xlxrxbegmm .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 4px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#xlxrxbegmm .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#xlxrxbegmm .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#xlxrxbegmm .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  vertical-align: bottom;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#xlxrxbegmm .gt_column_spanner {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  vertical-align: bottom;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 97%;
-}
-
-#xlxrxbegmm .gt_group_heading {
-  padding: 8px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#xlxrxbegmm .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#xlxrxbegmm .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#xlxrxbegmm .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#xlxrxbegmm .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#xlxrxbegmm .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#xlxrxbegmm .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 12px;
-}
-
-#xlxrxbegmm .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#xlxrxbegmm .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
-
-#xlxrxbegmm .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#xlxrxbegmm .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#xlxrxbegmm .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#xlxrxbegmm .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#xlxrxbegmm .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding: 4px;
-}
-
-#xlxrxbegmm .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#xlxrxbegmm .gt_sourcenote {
-  font-size: 90%;
-  padding: 4px;
-}
-
-#xlxrxbegmm .gt_left {
-  text-align: left;
-}
-
-#xlxrxbegmm .gt_center {
-  text-align: center;
-}
-
-#xlxrxbegmm .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#xlxrxbegmm .gt_font_normal {
-  font-weight: normal;
-}
-
-#xlxrxbegmm .gt_font_bold {
-  font-weight: bold;
-}
-
-#xlxrxbegmm .gt_font_italic {
-  font-style: italic;
-}
-
-#xlxrxbegmm .gt_super {
-  font-size: 65%;
-}
-
-#xlxrxbegmm .gt_footnote_marks {
-  font-style: italic;
-  font-size: 65%;
-}
-</style>
-<div id="xlxrxbegmm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">arm</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Lived</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Died</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_left">A: IFL</td>
-      <td class="gt_row gt_right">18</td>
-      <td class="gt_row gt_right">410</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left gt_striped">F: FOLFOX</td>
-      <td class="gt_row gt_right gt_striped">99</td>
-      <td class="gt_row gt_right gt_striped">592</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">G: IROX</td>
-      <td class="gt_row gt_right">26</td>
-      <td class="gt_row gt_right">354</td>
-    </tr>
-  </tbody>
-  
-  
-</table></div>
-
-] 
-
---
-
-.pull-right[
-
-````
-```{r}
-mockdata %&gt;% 
-  tabyl(arm, fu_fct) %&gt;% 
-  adorn_totals("row") %&gt;%
-  adorn_percentages("row") %&gt;%
-  adorn_pct_formatting(digits = 2) %&gt;%
-  adorn_ns() %&gt;%
-  gt::gt()
-```
-````
-
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
-
-#pvwsnktkbk .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-}
-
-#pvwsnktkbk .gt_heading {
-  background-color: #FFFFFF;
-  border-bottom-color: #FFFFFF;
-  border-left-style: hidden;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: hidden;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#pvwsnktkbk .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#pvwsnktkbk .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 4px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#pvwsnktkbk .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#pvwsnktkbk .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#pvwsnktkbk .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  vertical-align: bottom;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#pvwsnktkbk .gt_column_spanner {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  vertical-align: bottom;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 97%;
-}
-
-#pvwsnktkbk .gt_group_heading {
-  padding: 8px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#pvwsnktkbk .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#pvwsnktkbk .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#pvwsnktkbk .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#pvwsnktkbk .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#pvwsnktkbk .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#pvwsnktkbk .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 12px;
-}
-
-#pvwsnktkbk .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#pvwsnktkbk .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
-
-#pvwsnktkbk .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#pvwsnktkbk .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#pvwsnktkbk .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#pvwsnktkbk .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#pvwsnktkbk .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding: 4px;
-}
-
-#pvwsnktkbk .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#pvwsnktkbk .gt_sourcenote {
-  font-size: 90%;
-  padding: 4px;
-}
-
-#pvwsnktkbk .gt_left {
-  text-align: left;
-}
-
-#pvwsnktkbk .gt_center {
-  text-align: center;
-}
-
-#pvwsnktkbk .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#pvwsnktkbk .gt_font_normal {
-  font-weight: normal;
-}
-
-#pvwsnktkbk .gt_font_bold {
-  font-weight: bold;
-}
-
-#pvwsnktkbk .gt_font_italic {
-  font-style: italic;
-}
-
-#pvwsnktkbk .gt_super {
-  font-size: 65%;
-}
-
-#pvwsnktkbk .gt_footnote_marks {
-  font-style: italic;
-  font-size: 65%;
-}
-</style>
-<div id="pvwsnktkbk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">arm</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Lived</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Died</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_left">A: IFL</td>
-      <td class="gt_row gt_left">4.21%  (18)</td>
-      <td class="gt_row gt_left">95.79%  (410)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left gt_striped">F: FOLFOX</td>
-      <td class="gt_row gt_left gt_striped">14.33%  (99)</td>
-      <td class="gt_row gt_left gt_striped">85.67%  (592)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">G: IROX</td>
-      <td class="gt_row gt_left">6.84%  (26)</td>
-      <td class="gt_row gt_left">93.16%  (354)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left gt_striped">Total</td>
-      <td class="gt_row gt_left gt_striped">9.54% (143)</td>
-      <td class="gt_row gt_left gt_striped">90.46% (1356)</td>
-    </tr>
-  </tbody>
-  
-  
-</table></div>
-
-]
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;9 &lt;/strong&gt;
-&lt;/span&gt; 
-
---
-
-# Table One
-
----
-
-# Table One from `arsenal`
-
-
-
-```r
-tableby(arm ~ sex, data = mockdata) 
-#&gt; tableby Object
-#&gt; 
-#&gt; Function Call:
-#&gt; tableby(formula = arm ~ sex, data = mockdata)
-#&gt; 
-#&gt; Variable(s):
-#&gt; arm ~ sex
-```
-
---
-
-
-
-```r
-tableby(arm ~ sex, data = mockdata) %&gt;% 
-  summary()
-#&gt; 
-#&gt; 
-#&gt; |                         | A: IFL (N=428) | F: FOLFOX (N=691) | G: IROX (N=380) | Total (N=1499) | p value|
-#&gt; |:------------------------|:--------------:|:-----------------:|:---------------:|:--------------:|-------:|
-#&gt; |**sex**                  |                |                   |                 |                |   0.190|
-#&gt; |&amp;nbsp;&amp;nbsp;&amp;nbsp;Female |  151 (35.3%)   |    280 (40.5%)    |   152 (40.0%)   |  583 (38.9%)   |        |
-#&gt; |&amp;nbsp;&amp;nbsp;&amp;nbsp;Male   |  277 (64.7%)   |    411 (59.5%)    |   228 (60.0%)   |  916 (61.1%)   |        |
-```
-
-
----
-
-# One more step!
-
-For R Markdown pretty printing...
-
-````
-```{r results='asis'}
-tableby(arm ~ sex, data = mockdata) %&gt;% 
-  summary()
-```
-````
-
-
-|                         | A: IFL (N=428) | F: FOLFOX (N=691) | G: IROX (N=380) | Total (N=1499) | p value|
-|:------------------------|:--------------:|:-----------------:|:---------------:|:--------------:|-------:|
-|**sex**                  |                |                   |                 |                |   0.190|
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;Female |  151 (35.3%)   |    280 (40.5%)    |   152 (40.0%)   |  583 (38.9%)   |        |
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;Male   |  277 (64.7%)   |    411 (59.5%)    |   228 (60.0%)   |  916 (61.1%)   |        |
-
-???
-
-This is a new knitr chunk option- the results option.
-
-
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;10 &lt;/strong&gt;
-&lt;/span&gt; 
-
---
-
-# Table Two
-
----
-class: your-turn
-
-# Your turn
-
-## Table two
-
-Find this section:
-```
-&lt;--TODO: add adverse events table--&gt;
-```
-
-1. Find the code chunk started for you. 
-
-1. Code and print a table called `ae_tab` that summarizes 2+ variables that start with `ae_`.
-
-__If this was easy__, edit the `summary()` function to modify the number of [digits](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#modify-the-number-of-digits-used). Or add [labels](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#add-labels).
-
-_psst...answers on next slide..._
-
-<div class="countdown" id="timer_5ebb461a" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
----
-class: your-turn
-
-# Answer
-
-````
-```{r results='asis', layout="l-body-outset"}
-ae_tab &lt;- mockdata %&gt;% 
-  tableby(
-    arm ~ ae_blood_clot + ae_vomiting + ae_diarrhea + ae_neuropathy + ae_low_wbc, 
-    data = .) %&gt;% 
-  summary(digits = 2, 
-          digits.p = 3, 
-          digits.pct = 1)
-ae_tab
-```
-````
-
----
-
-
-|                    | A: IFL (N=428) | F: FOLFOX (N=691) | G: IROX (N=380) | Total (N=1499) | p value|
-|:-------------------|:--------------:|:-----------------:|:---------------:|:--------------:|-------:|
-|**ae_blood_clot**   |                |                   |                 |                |   0.742|
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  411 (96.0%)   |    658 (95.2%)    |   365 (96.1%)   |  1434 (95.7%)  |        |
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   17 (4.0%)    |     33 (4.8%)     |    15 (3.9%)    |   65 (4.3%)    |        |
-|**ae_vomiting**     |                |                   |                 |                |   0.006|
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  339 (79.2%)   |    571 (82.6%)    |   333 (87.6%)   |  1243 (82.9%)  |        |
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   89 (20.8%)   |    120 (17.4%)    |   47 (12.4%)    |  256 (17.1%)   |        |
-|**ae_diarrhea**     |                |                   |                 |                |   0.001|
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  339 (79.2%)   |    546 (79.0%)    |   333 (87.6%)   |  1218 (81.3%)  |        |
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   89 (20.8%)   |    145 (21.0%)    |   47 (12.4%)    |  281 (18.7%)   |        |
-|**ae_neuropathy**   |                |                   |                 |                | &lt; 0.001|
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  354 (82.7%)   |    580 (83.9%)    |   347 (91.3%)   |  1281 (85.5%)  |        |
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   74 (17.3%)   |    111 (16.1%)    |    33 (8.7%)    |  218 (14.5%)   |        |
-|**ae_low_wbc**      |                |                   |                 |                | &lt; 0.001|
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;0 |  354 (82.7%)   |    551 (79.7%)    |   347 (91.3%)   |  1252 (83.5%)  |        |
-|&amp;nbsp;&amp;nbsp;&amp;nbsp;1 |   74 (17.3%)   |    140 (20.3%)    |    33 (8.7%)    |  247 (16.5%)   |        |
 
 ---
 
@@ -3118,7 +2839,7 @@ class: middle, center, inverse
 
 &lt;span class="fa-stack fa-4x"&gt;
   &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;11 &lt;/strong&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;7 &lt;/strong&gt;
 &lt;/span&gt; 
 
 # Get figures in
@@ -3140,7 +2861,7 @@ class: your-turn
 
 _psst...next slide has answers..._
 
-<div class="countdown" id="timer_5ebb47f3" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5ebb7758" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -3183,123 +2904,7 @@ Distill is much less chatty than other outputs due to default `knitr` code chunk
 ]
 
 
-
-
 ---
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;12 &lt;/strong&gt;
-&lt;/span&gt; 
-
---
-
-# Hygiene
-
-
----
-class: middle, center
-
-# Philosophy
-
---
-
-.pull-left[
-
-### Less
-
-# 🐭
-]
-
-.pull-right[
-
-### More
-
-# 🎹
-]
-
----
-class: middle, center
-
-
-.pull-left[
-![](https://raw.githubusercontent.com/hadley/r4ds/master/screenshots/rstudio-workspace.png)&lt;!-- --&gt;
-]
-
-.pull-right[
-# &lt;i class="fas fa-mouse-pointer"&gt;&lt;/i&gt;
-
-In RStudio: _Tools &gt; Global Options_
-
-]
-
----
-class: middle, center
-
-# Restart R early &amp; often
-
-.pull-left[
-# &lt;i class="fas fa-mouse-pointer"&gt;&lt;/i&gt;
-
-In RStudio: _Session &gt; Restart R_
-]
-
-.pull-right[
-# &lt;i class="far fa-keyboard"&gt;&lt;/i&gt;
-
-`Cmd/Ctrl` + `Shift` + `F10` (Mac)   
-or  
-`Ctrl` + `Shift` + `F10` (Windows/Linux)
-
-]
-
----
-class: middle, center
-
-# Reknit up to...
-
-.pull-left[
-# &lt;i class="fas fa-mouse-pointer"&gt;&lt;/i&gt;
-
-![](images/rstudio-runabove.png)
-
-]
-
-.pull-right[
-# &lt;i class="far fa-keyboard"&gt;&lt;/i&gt;
-
-Place cursor anywhere in your doc then:
-
-`Command` + `Option` + `P` (Mac)  
-or  
-`Ctrl`+`Alt`+`P`  (Windows/Linux)
-]
-
-
----
-class: middle, center
-
-# &lt;i class="fas fa-smoking-ban"&gt;&lt;/i&gt;
-
-# Not recommended
-
-
-```r
-rm(list = ls())
-```
-
-.footnote[https://whattheyforgot.org/save-source.html#rm-list-ls]
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;13 &lt;/strong&gt;
-&lt;/span&gt; 
-
---
 
 # Projects
 
@@ -3329,23 +2934,6 @@ _File &gt; New Project..._
 Pick one
 &lt;img src="images/rstudio-newproj.png" width="1773" /&gt;
 ]
-
----
-class: middle, center
-
-
-# &lt;i class="far fa-keyboard"&gt;&lt;/i&gt;
-
-Equivalent to:
-_File &gt; New Project...&gt;_ New or Existing
-
-
-```r
-library(usethis)
-create_project(here::here())
-```
-
-.footnote[https://usethis.r-lib.org/reference/create_package.html]
 
 ---
 class: middle, center
@@ -3382,39 +2970,11 @@ class: middle, center
 ![](images/rstudio-blankrmd.png)
 ]
 
----
-class: live-code
-
-# Live code demo
-
-We make our first R project from scratch with a single R Markdown file inside.
-
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;14 &lt;/strong&gt;
-&lt;/span&gt; 
-
---
-
-# External files
-
----
-class: center
-
-&lt;img src="images/Data.jpg" width="1027" /&gt;
-
-???
-
-save a local copy, keep raw data raw
 
 ---
 class: middle
 
-# File paths
+# Working with data
 
 .pull-left[
 
@@ -3450,146 +3010,6 @@ mockdata &lt;- read_csv(
 https://whattheyforgot.org/project-oriented-workflow.html#setwd
 
 ---
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;15 &lt;/strong&gt;
-&lt;/span&gt; 
-
---
-
-# Bibliography
-
----
-
-
-See [citations](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citations)
-
-
-.pull-right[
-Generates these in-text citation styles:
-
-1. Blah blah [see @R-blogdown, pp. 33-35; also @R-knitr, ch. 1].
-
-2. Blah blah [@R-blogdown, pp. 33-35].
-
-3. Blah blah [@R-blogdown; @R-knitr].
-
-4. Yihui says blah [-@R-blogdown].
-
-5. @R-blogdown says blah.
-
-]
-
----
-class: your-turn
-
-# Your turn
-
-### Choose your adventure
-
-1. Take `04-manuscript.Rmd` and add in the tables and figures in code chunks, with code chunk options that make sense. 🧶 __Knit__ and/or run chunks interactively as you work.
-
-1. Play with knitting to different output formats. Try to figure out valid output options for each format you can add to your YAML. 
-
-1. Go to https://github.com/thomasp85/scico and try knitting with different palette names. Pick a favorite.
-
-__Too much?__ Look at `04-manuscript-alison.Rmd`, 🧶 __Knit__. Then do 2 and 3 above.
-
-__Not enough?__ See next slide for building a graphical user interface for parameters.
-
-<div class="countdown" id="timer_5ebb47db" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
----
-class: your-turn
-
-# Your turn
-
-### Extra: Play more with parameters
-
-.pull-left[
-
-From `03-draft.Rmd`
-
-```yaml
----
-params:
-  palette: berlin
----
-```
-
-]
-
-.pull-right[
-
-Try in `04-manuscript.Rmd`
-
-```yaml
----
-params:
-  palette:
-    input: select
-    label: 'scico palette:'
-    choices:
-    - berlin
-    - roma
-    - cork
-    - grayC
-    selected: roma
----
-```
-]
-
----
-
-# If we have time...
-
-
-.pull-left[
-
-Open &amp; Knit:
-
-`analyis/presentations/slides.Rmd`
-
-```yaml
----
-output:
-  beamer_presentation:
-    slide_level: 2.0
-  powerpoint_presentation: default
-  revealjs::revealjs_presentation: default
----
-```
-]
-
-.pull-right[
-
-![](index_files/figure-html/unnamed-chunk-85-1.gif)&lt;!-- --&gt;
-
-
-]
-
-
----
-class: middle, center, inverse
-
-
-# Time to wrap-up!
-
-<div class="countdown blink-colon noupdate-15" id="timer_5ebb4658" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
----
-class: middle, center, inverse
-
-&lt;span class="fa-stack fa-4x"&gt;
-  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
-  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;!&lt;/strong&gt;
-&lt;/span&gt; 
 
 
 # Extension formats
@@ -3604,15 +3024,6 @@ class: middle, center
 https://jenthompson.me/examples/progressdash.html
 
 https://jenthompson.me/2018/02/09/flexdashboards-monitoring/
-
----
-class: middle, center
-
-# Presentations
-
-&lt;img src="index_files/figure-html/unnamed-chunk-88-1.gif" width="50%" /&gt;
-
-https://bookdown.org/yihui/rmarkdown/presentations.html
 
 ---
 class: middle, center, inverse
@@ -3768,24 +3179,11 @@ class: middle
 .footnote[https://bookdown.org/yihui/rmarkdown/parameterized-reports.html,&lt;br&gt;
 https://rmarkdown.rstudio.com/lesson-6.html]
 
----
-
-# More
-
-+ [`redoc` 📦](https://noamross.github.io/redoc/)
-
-+ [`spelling` 📦](https://docs.ropensci.org/spelling/)
-
-+ [`wordcountaddin` 📦](https://github.com/benmarwick/wordcountaddin)
-
 
 ---
 class: inverse, middle, center
 
 # Thank you!
-
-
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
