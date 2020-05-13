@@ -864,6 +864,7 @@ template: card1
 template: card2
 
 ---
+name: card3
 background-image: url(images/card3.png)
 background-size: contain
 
@@ -1187,47 +1188,141 @@ https://r4ds.had.co.nz/graphics-for-communication.html#figure-sizing
 
 ]
 
+---
+
+# fig.path
+
+````
+```{r fig.path="figs/", echo=FALSE}`r ''`
+ae_pct_plot
+```
+````
+
+```{r echo=FALSE, fig.retina=3, out.width='70%', fig.asp=.5}
+ae_pct_plot
+```
+
+---
+
+# fig.path
+
+````
+```{r ae-plot, fig.path="figs/", echo=FALSE}`r ''`
+ae_pct_plot
+```
+````
+
+```{r ae-plot, echo=FALSE, fig.retina=3, out.width='70%', fig.asp=.5}
+ae_pct_plot
+```
+
+---
+
+# Chunk labels
+
+.pull-left[
+
+````
+```{r peek}`r ''`
+glimpse(mockdata)
+```
+````
+
+]
+
+.pull-right[
+
++ Place between curly braces<br>`{r label}`
+
++ Separated options with commas<br>`{r label, option1=value}`
+
++ Careful! No duplicate chunk labels
+
+    ````
+    ```{r peek}`r ''`
+    head(mockdata)
+    ```
+    ````
+
+    ```
+    Error in parse_block(g[-1], g[1], params.src) : 
+      duplicate label 'peek'
+    Calls: <Anonymous> ... process_file -> split_file -> lapply -> FUN -> parse_block
+    Execution halted
+    ```
+
+]
+
+???
+
+how can we make it easier on ourselves to explore the code in here?
+
+show how to add chunk labels and view in IDE interactively
+
+---
+class: top, center
+background-image: url(images/plants.jpg)
+background-size: 70%
+background-color: #fff5ec
+
+# Chunks as crops or houseplants?
+
+.footnote[https://masalmon.eu/2017/08/08/chunkpets/]
+
+---
+class: middle, center
+
+# A good chunk label
+
+.pull-left[
+
+### Good
+
+`my-plot`
+
+`myplot`
+
+`myplot1`
+
+`myplot-1`
+
+`MY-PLOT`
+
+]
+
+.pull-right[
+
+### Bad
+
+`my_plot`
+
+`my plot`
+
+everything else!
+
+]
+
+---
+class: middle, center
+
+# A good chunk label
+
+Think: kebabs, not snakes
+
+
+---
+background-image: url(images/pour.jpg)
+background-position: left
+background-size: contain
+class: middle, center
+
+.pull-right[
+![](images/figs-label.png)
+]
 
 ---
 
 # fig.cap
-
-For the `ae_pct_plot`, I followed [these recommendations](https://www.bmj.com/content/355/bmj.i5078).
-
-````
-```{r fig.cap="BMJ, 2016 paper", echo=FALSE}`r ''`
-knitr::include_graphics(here::here("images/F3.large.jpg"))
-```
-````
-
-
-
-```{r fig.cap="BMJ, 2016 paper", out.width='35%', echo=FALSE}
-knitr::include_graphics(here::here("images/F3.large.jpg"))
-```
-
-???
-
-This is how you can also add static figures. You could use R Markdown, but with knitr you can also include a figure caption. As you might have noticed in your output, this ends up numbered. 
-
----
-class: live-code
-
-# Live code demo
-
-We open up `03-draft.Rmd` and take the static image and together we:
-
-1. Label that chunk
-
-1. Add a cross-reference like `see Figure \@ref(fig:bmj)`
-
-1. Try again with `counts-by-site` code chunk: `see Figure \@ref(fig:counts-by-site)` _(watch what happens if try to cross-reference without a caption!)_
-
-.footnote[Cross-referencing only works in these output packages: distill, bookdown, blogdown]
-
----
-
-# Caption a figure
 
 ````
 ```{r age-plot, echo=FALSE, fig.cap='Age distributions'}`r ''`
@@ -1237,7 +1332,7 @@ age_histogram
 
 .center[
 
-```{r age-plot, out.width='25%', echo = FALSE, fig.retina = 3}
+```{r out.width='25%', echo = FALSE, fig.retina = 3}
 age_histogram
 ```
 
@@ -1276,6 +1371,8 @@ See Figure [1]().
 
 ]
 
+.footnote[Cross-referencing only works in these output packages: distill, bookdown, blogdown]
+
 ---
 
 # Key takeaway
@@ -1292,19 +1389,6 @@ Then you can have:
 
 .footnote[\* and you are using distill, bookdown, or blogdown output formats]
 
----
-
-# fig.path
-
-````
-```{r ae-plot, fig.path="figs/", echo=FALSE}`r ''`
-ae_pct_plot
-```
-````
-
-```{r ae-plot, echo=FALSE, fig.retina=3, out.width='70%', fig.asp=.5}
-ae_pct_plot
-```
 
 ---
 
@@ -1503,88 +1587,6 @@ str(knitr::opts_chunk$get())
 
 ]
 
----
-
-# Chunk labels
-
-.pull-left[
-
-````
-```{r peek, echo=FALSE, results='hide'}`r ''`
-glimpse(mockdata)
-```
-````
-
-]
-
-.pull-right[
-
-+ Place between curly braces<br>`{r label}`
-
-+ Separated options with commas<br>`{r label, option1=value}`
-
-+ Careful! No duplicate chunk labels
-
-    ````
-    ```{r peek}`r ''`
-    head(mockdata)
-    ```
-    ````
-
-    ```
-    Error in parse_block(g[-1], g[1], params.src) : 
-      duplicate label 'peek'
-    Calls: <Anonymous> ... process_file -> split_file -> lapply -> FUN -> parse_block
-    Execution halted
-    ```
-
-]
-
-???
-
-how can we make it easier on ourselves to explore the code in here?
-
-show how to add chunk labels and view in IDE interactively
-
----
-class: middle, center
-
-# Crop or houseplant?
-
-.footnote[https://masalmon.eu/2017/08/08/chunkpets/]
-
----
-class: middle, center
-
-# A good chunk label
-
-.pull-left[
-
-### Good
-
-`my-plot`
-
-`myplot`
-
-`myplot1`
-
-`myplot-1`
-
-`MY-PLOT`
-
-]
-
-.pull-right[
-
-### Bad
-
-`my_plot`
-
-`my plot`
-
-everything else!
-
-]
 
 ---
 template: card0
@@ -1603,14 +1605,17 @@ background-image: url(images/card4.png)
 background-size: contain
 
 
+
+
+
+
 ---
-class: middle, center, inverse
+class: center
+background-image: url(images/typewriter.jpg)
+background-size: contain
+background-color: #f6f6f6
 
-# Tables
-
-![](https://media.giphy.com/media/i9c6lFmOSXKZW/giphy.gif)
-
-
+# Markdown tables
 
 ---
 class: center
@@ -1644,6 +1649,13 @@ class: center
 | 02:45 - 03:00 |         | *Break*  |
 
 ]
+
+---
+class: middle, center, inverse
+
+# Tables
+
+![](https://media.giphy.com/media/i9c6lFmOSXKZW/giphy.gif)
 
 ---
 class: center, middle
