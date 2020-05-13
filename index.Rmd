@@ -14,7 +14,6 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: "16:9"
-      beforeInit: "https://platform.twitter.com/widgets.js"
     includes:
       in_header: assets/header.html 
 params:
@@ -70,7 +69,7 @@ https://rstd.io/rmd4medicine-cloud
 ---
 layout: true
 
-<div class="my-footer"><span>https://rstd.io/rmd4medicine-cloud</span></div>
+<div class="my-footer"><span>https://rstd.io/rmd4cdc</span></div>
 
 ---
 class: inverse, middle, center
@@ -243,7 +242,9 @@ class: middle, inverse, center
 
 # Same ~~doll~~ source
 
-# Different occasions
+--
+
+# Different ~~outfits~~ outputs
 
 ---
 class: middle, center
@@ -279,17 +280,6 @@ background-size: contain
 
 .footnote[https://www.dear-data.com/]
 
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Metadata
 
 ---
 
@@ -773,10 +763,13 @@ template: card2
 background-image: url(images/card3.png)
 background-size: contain
 
+---
+class: middle, center, inverse
 
+# `code` -> plots
 ---
 
-# But first, code chunks
+# Code chunks
 
 .pull-left[
 
@@ -804,7 +797,8 @@ mockdata %>%
 
 ---
 
-# But first, code chunks
+# Code chunks
+
 
 .pull-left[
 
@@ -831,7 +825,8 @@ n_sites <- n_distinct(mockdata$site)
 
 ---
 
-# But first, code chunks
+# Code chunks
+
 
 .pull-left[
 
@@ -858,7 +853,8 @@ n_sites
 
 ---
 
-# But first, code chunks
+# Code chunks
+
 
 .pull-left[
 
@@ -1272,17 +1268,7 @@ knitr::opts_chunk$set(
 
 ]
 
----
-class: inverse, center, middle
 
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Output
 
 ---
 
@@ -1496,6 +1482,22 @@ everything else!
 
 ]
 
+---
+template: card0
+
+---
+template: card1
+
+---
+template: card2
+
+---
+template: card3
+
+---
+background-image: url(images/card4.png)
+background-size: contain
+
 
 ---
 class: middle, center, inverse
@@ -1504,17 +1506,6 @@ class: middle, center, inverse
 
 ![](https://media.giphy.com/media/i9c6lFmOSXKZW/giphy.gif)
 
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Custom typed tables
 
 
 ---
@@ -1591,17 +1582,6 @@ knitr::include_graphics("images/tables-them.jpg")
 
 .footnote[Images from [Unsplash](https://unsplash.com/photos/_TuIdedBPwQ) and [Wikipedia](https://commons.wikimedia.org/wiki/File:FIAT_500L_gear_shift.jpg)]
 
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Tables for You (EDA)
 
 ---
 
@@ -1611,12 +1591,23 @@ class: middle, center, inverse
 ```
 
 ---
+class: middle
 
-# EDA tables: `janitor`
+.left-column[
 
-Good for 1- and 2-way frequency tables with categorical variables
+![](https://raw.githubusercontent.com/sfirke/janitor/master/man/figures/logo_small.png)
+]
 
-Count number of participants by `arm`, then add by status (`fu_fct`) too
+.right-column[
+# the janitor package
+
+<http://sfirke.github.io/janitor/>
+]
+
+---
+
+# 1-way frequency `tabyl()`
+
 
 .pull-left[
 
@@ -1642,19 +1633,65 @@ mockdata %>%
 
 ---
 
+# 2-way frequency `tabyl()`
+
+
 .pull-left[
 
-````
-```{r}`r ''`
+```{r}
 mockdata %>% 
-  tabyl(arm, fu_fct) %>%
-  gt::gt()
+  tabyl(arm, fu_fct)
 ```
-````
 
-```{r echo=FALSE}
+] 
+
+--
+
+.pull-right[
+
+```{r}
 mockdata %>% 
-  tabyl(arm, fu_fct) %>%
+  tabyl(arm, fu_fct) %>% 
+  adorn_totals("row") %>% 
+  adorn_percentages() %>%
+  adorn_pct_formatting() %>%
+  adorn_ns()
+```
+
+]
+
+---
+class: middle
+
+.left-column[
+
+```{r out.width='50%', echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/gt/master/man/figures/logo.svg")
+```
+
+]
+
+.right-column[
+# the gt package
+
+<https://gt.rstudio.com/>
+]
+
+---
+background-image: url(https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg)
+background-size: contain
+
+---
+background-image: url(https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg)
+background-size: contain
+
+---
+
+.pull-left[
+
+```{r}
+mockdata %>% 
+  tabyl(arm, fu_fct) %>% 
   gt::gt()
 ```
 
@@ -1664,24 +1701,12 @@ mockdata %>%
 
 .pull-right[
 
-````
-```{r}`r ''`
+```{r}
 mockdata %>% 
   tabyl(arm, fu_fct) %>% 
-  adorn_totals("row") %>%
-  adorn_percentages("row") %>%
-  adorn_pct_formatting(digits = 2) %>%
-  adorn_ns() %>%
-  gt::gt()
-```
-````
-
-```{r echo=FALSE}
-mockdata %>% 
-  tabyl(arm, fu_fct) %>% 
-  adorn_totals("row") %>%
-  adorn_percentages("row") %>%
-  adorn_pct_formatting(digits = 2) %>%
+  adorn_totals("row") %>% 
+  adorn_percentages() %>%
+  adorn_pct_formatting() %>%
   adorn_ns() %>%
   gt::gt()
 ```
@@ -1689,126 +1714,64 @@ mockdata %>%
 ]
 
 ---
-class: middle, center, inverse
+class: middle
 
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
+.left-column[
 
---
+![](http://www.danieldsjoberg.com/gtsummary/reference/figures/logo.png)
+]
 
-# Table One
+.right-column[
+# the gtsummary package
 
----
-
-# Table One from `arsenal`
-
-
-```{r}
-tableby(arm ~ sex, data = mockdata) 
-```
-
---
-
-
-```{r}
-tableby(arm ~ sex, data = mockdata) %>% 
-  summary()
-```
-
+<http://www.danieldsjoberg.com/gtsummary/index.html>
+]
 
 ---
+class: middle
 
-# One more step!
+# A `tbl_summary()`
 
-For R Markdown pretty printing...
-
-````
-```{r results='asis'}`r ''`
-tableby(arm ~ sex, data = mockdata) %>% 
-  summary()
+.left-column[
+```{r sum-tbl, results='hide', warning=FALSE, message=FALSE}
+library(gtsummary)
+mockdata %>% 
+  select(arm, sex) %>% 
+  tbl_summary(by = arm) %>% 
+  add_p() %>% 
+  add_overall()
 ```
-````
+]
 
-```{r results= 'asis', echo=FALSE}
-tableby(arm ~ sex, data = mockdata) %>% 
-  summary()
+.right-column[
+```{r ref.label='sum-tbl', echo=FALSE}
+
 ```
 
-???
-
-This is a new knitr chunk option- the results option.
-
-
+]
 
 ---
-class: middle, center, inverse
+class: middle
 
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
+# A bigger `tbl_summary()`
 
---
+.left-column[
 
-# Table Two
-
----
-class: your-turn
-
-# Your turn
-
-## Table two
-
-Find this section:
+```{r big-sum-tbl, results='hide', warning=FALSE, message=FALSE}
+library(gtsummary)
+mockdata %>% 
+  select(arm, 
+         starts_with("ae")) %>% 
+  tbl_summary(by = arm)  
 ```
-<--TODO: add adverse events table-->
+]
+
+.right-column[
+```{r ref.label='big-sum-tbl', echo=FALSE}
+
 ```
 
-1. Find the code chunk started for you. 
-
-1. Code and print a table called `ae_tab` that summarizes 2+ variables that start with `ae_`.
-
-__If this was easy__, edit the `summary()` function to modify the number of [digits](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#modify-the-number-of-digits-used). Or add [labels](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#add-labels).
-
-_psst...answers on next slide..._
-
-```{r echo = FALSE}
-countdown(minutes = 5)
-```
-
----
-class: your-turn
-
-# Answer
-
-````
-```{r results='asis', layout="l-body-outset"}`r ''`
-ae_tab <- mockdata %>% 
-  tableby(
-    arm ~ ae_blood_clot + ae_vomiting + ae_diarrhea + ae_neuropathy + ae_low_wbc, 
-    data = .) %>% 
-  summary(digits = 2, 
-          digits.p = 3, 
-          digits.pct = 1)
-ae_tab
-```
-````
-
----
-
-```{r results='asis', echo=FALSE}
-ae_tab <- mockdata %>% 
-  tableby(
-    arm ~ ae_blood_clot + ae_vomiting + ae_diarrhea + ae_neuropathy + ae_low_wbc, 
-    data = .) %>% 
-  summary(digits = 2, 
-          digits.p = 3, 
-          digits.pct = 1)
-ae_tab
-```
-
+]
 
 ---
 class: middle, center
@@ -1899,22 +1862,8 @@ knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/
 
 > &mdash; [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 
----
-class: center, middle
-
-# Foreshadowing
-
-
-```{r echo=FALSE, out.width="40%"}
-knitr::include_graphics("images/outputs.png")
-```
-
-??? 
-
-but first a Check-in...
 
 ---
-class: pop-quiz
 
 # Check-in
 
@@ -1925,7 +1874,7 @@ Which of the following is **NOT** a part of R Markdown basic anatomy?
 
 1. Text
 
-1. CSS
+1. Data
 
 1. Code
 
@@ -1982,33 +1931,6 @@ class: your-turn
      (noun)                                             (noun) 
 ```
 
----
-class: your-turn
-
-# Your turn
-
-Find a partner and look at `02-progress.Rmd` together. 
-Look at the source, then `r emo::ji("yarn")` **Knit**.
-
-Answer the following questions:
-
-1. What is the output **format**?
-
-1. Are there any output **options**?
-
-1. Are any `knitr` **global** chunk options set?
-
-1. Anything in the code look foreign to you? 
-
-1. Anything in the output (or not in the output) surprise you?
-
-```{r echo = FALSE}
-countdown(minutes = 5)
-```
-
-
-
----
 
 ```{r load-data3, include=FALSE}
 mockdata_all <- read_csv(here::here("mockpaper/data/mockdata.csv")) %>% 
@@ -2024,39 +1946,6 @@ mockdata <- mockdata_all %>%
 source('figs.R')
 ```
 
----
-class: inverse, middle
-
-
-.pull-left[
-
-```{r echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/ggplot2.png")
-```
-
-]
-
---
-
-.pull-right[
-
-[`ggplot2` package](https://ggplot2.tidyverse.org/)
-
-[`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
-
-[R4DS chapter](https://r4ds.had.co.nz/data-visualisation.html)
-
-]
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
-# Get figures in
 
 ---
 class: your-turn
