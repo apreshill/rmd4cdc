@@ -1372,7 +1372,7 @@ library(tidyverse)
 
 ---
 
-# Chunk options
+# Other useful chunk options
 
 .pull-left[
 
@@ -1460,7 +1460,7 @@ glimpse(mockdata)
 
 ---
 
-# Other useful chunk options
+# Using chunk options
 
 .pull-left[
 
