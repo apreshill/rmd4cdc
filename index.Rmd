@@ -53,7 +53,7 @@ class: title-slide, right, top
 
 ## `r rmarkdown::metadata$author` &#183; RStudio
 
-### <https://rstd.io/rmd4cdc>
+#### <https://rstd.io/rmd4cdc>
 
 
 
@@ -72,54 +72,41 @@ layout: true
 
 <div class="my-footer"><span>https://rstd.io/rmd4medicine-cloud</span></div>
 
----
-background-image: url(images/hello.jpg)
-background-position: top center
-background-size: 100%
-class: bottom, center
-
-.pull-left[
-### Alison Hill  
-[<i class="fab fa-github"></i> @apreshill](https://github.com/apreshill)  
-[<i class="fab fa-twitter"></i> @apreshill](https://twitter.com/apreshill)
-
-### Peter Higgins  
-[<i class="fab fa-github"></i> @higgi13425](https://github.com/higgi13425)  
-[<i class="fab fa-twitter"></i> @ibddoctor](https://twitter.com/ibddoctor)
-]
-
-.pull-right[
-### Daniel Chen  
-[<i class="fab fa-github"></i> @chendaniely](https://github.com/chendaniely)  
-[<i class="fab fa-twitter"></i> @chendaniely](https://twitter.com/chendaniely)
-
-]
-
-.footnote[All content is CC-BY. All art (unless otherwise noted) is by [Desirée De Leon](https://desiree.rbind.io/), CC-BY-NC-ND.]
-
----
-background-image: url(images/deardata.jpg)
-background-size: 50%
-
-.footnote[https://www.dear-data.com/]
-
 
 ---
 
-```{r child="what-is-rmd.Rmd"}
+# What is R Markdown?
 
-```
+--
+
+1. An authoring framework for data science.
+
+--
+
+1. A document format (`.Rmd`).
+
+--
+
+1. An R package named `rmarkdown`.
+
+--
+
+1. A file format for making dynamic documents with R. 
+
+--
+
+1. A tool for integrating prose, code, and results.
+
+--
+
+1. A computational document.
+
+--
+
+1. Wizardry.
 
 ---
 
-.left-column[
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #2f5275;"></i>
-  <strong class="fa-stack-1x" style="color: #fff;">?</strong>
-</span> 
-]
-
-.right-column[
 
 # What is R Markdown?
 
@@ -137,7 +124,12 @@ background-size: 50%
 
 1. Wizardry. (`r emo::ji("wizard")`)
 
-]
+
+---
+background-image: url(images/rmarkdown_wizards.png)
+background-size: contain
+
+.footnote[Art by [Allison Horst](https://twitter.com/allison_horst?lang=en)]
 
 ---
 class: center
@@ -165,6 +157,13 @@ background-size: contain
 # `r emo::ji("cheese")` Cheese crisis `r emo::ji("cheese")`
 
 .footnote[https://dickbrouwer.com/blog/a-guide-to-better-meetings/]
+
+---
+class: center
+background-image: url(images/remote-crisis.jpg)
+background-size: cover
+
+# `r emo::ji("rotating_light")` Current crisis `r emo::ji("rotating_light")`
 
 ---
 class: middle, center
@@ -246,80 +245,6 @@ class: middle, center
 knitr::include_graphics("images/doll.png")
 ```
 
----
-class: your-turn
-
-# Your turn
-
-Find a partner and look at `01-explore.Rmd` together. 
-Look at the source, then `r emo::ji("yarn")` **Knit** to HTML.
-
-Try to identify these parts in the source and the output:
-
-1. The **metadata**
-
-1. The **text** 
-
-1. The **code**
-
-1. The **output**
-
-**If this was easy**, try to find all code that produces a *plot*.
-
-_psst...`01-explore-alison-params.Rmd` is also there..._
-
-```{r echo = FALSE}
-countdown(minutes = 5)
-```
-
----
-class: live-code
-
-# Basic anatomy I
-
-We look at the source anatomy for `01-explore.Rmd` together:
-
-1. The **metadata**
-
-1. The **text** 
-
-1. The **code**
-    
----
-class: center, middle
-
-```{r knit-html, echo=FALSE, out.width="50%"}
-knitr::include_graphics("images/Knit-to-html.jpg")
-```
-
----
-class: center, middle
-
-```{r do-live, echo=FALSE, out.width="50%"}
-knitr::include_graphics("images/doc-live.jpg")
-```
-
----
-class: live-code
-
-# Basic anatomy II
-
-We look at the output anatomy for `01-explore.Rmd` together:
-
-1. The **metadata**
-
-1. The **text** 
-
-1. The **code**
-
-1. The **output**
-
-
----
-background-image: url(images/rmarkdown_wizards.png)
-background-size: contain
-
-.footnote[Art by [Allison Horst](https://twitter.com/allison_horst?lang=en)]
 
 ---
 class: middle, center
@@ -327,6 +252,23 @@ class: middle, center
 # What is inside?
 
 ![](images/doc-make.jpg)
+
+
+
+
+---
+name: card0
+background-image: url(images/card0.png)
+background-size: contain
+
+.footnote[https://www.dear-data.com/]
+
+---
+name: card1
+background-image: url(images/card1.png)
+background-size: contain
+
+.footnote[https://www.dear-data.com/]
 
 ---
 class: middle, center, inverse
@@ -384,7 +326,9 @@ yml_empty() %>%
 
 ```{r echo = FALSE}
 yml_empty() %>% 
-  yml_output(html_document(toc = TRUE)) %>% 
+  yml_output(html_document(toc = TRUE,
+                           toc_float = TRUE,
+                           theme = "flatly")) %>% 
   asis_yaml_output()
 ```
 
@@ -399,57 +343,304 @@ knitr::include_graphics("images/orchestra.jpg")
 
 ]
 
+
+---
+class: middle, center
+
+# Output formats
+
+
+---
+class: middle, center
+
+```{r echo=FALSE,out.width="50%"}
+knitr::include_graphics("images/outputs.png")
+```
+
+???
+
+Built in formats (in the `rmarkdown` package)
+
+versus
+
+extensions (different packages that extend output formats available to you)
+
+---
+class: middle, center
+
+
+```{r echo=FALSE, out.width="40%", fig.link="https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats"}
+knitr::include_graphics("images/rmdbase-formats.png")
+```
+
+https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats
+
 ---
 class: your-turn
 
 # Your turn
 
-## Edit your YAML
+## Use a different built-in format
 
-Use `?html_document` from your R console to:
+.pull-left[
 
-1. Add a floating table of contents
+Use the drop-down menu for the `r emo::ji("yarn")` **Knit** button and try:
 
-1. Add a theme
+1. Knit to Word
 
-1. Use the "kable" method to print data frames (more on this later!) 
+1. Knit to PDF
 
-`r emo::ji("yarn")` **Knit** to HTML to see the output.
+]
 
-**If this was easy**, try to embed the `Rmd` source code to download.
+.pull-right[
+```{r echo=FALSE, out.width="60%", fig.align="center"}
+knitr::include_graphics("images/knit-dropdown.png")
+```
 
-_psst...answers on the next slide..._
+]
 
 ```{r echo = FALSE}
-countdown(minutes = 3)
+countdown(minutes = 2)
 ```
+
+
+---
+
+# Temp check `r emo::ji("thermometer")`
+
+Does your current YAML look like this?
+
+```{r echo=FALSE}
+yml_empty() %>% 
+  yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
+  yml_output(html_document(toc = TRUE, toc_float = TRUE, theme = "flatly"), 
+             word_document(), 
+             pdf_document()
+             )  %>% 
+  asis_yaml_output()
+```
+
+???
+
+This is a great way to "control" your knit button!
+
+Notice that when you knit, it respects those output options in your YAML.
+
+This way you "save" your output options
 
 ---
 class: your-turn
 
-# Answers
+# Your turn
 
-```{r echo = FALSE}
+## Add output options with your YAML
+
+.pull-left[
+
+You just used the drop-down `r emo::ji("yarn")` **Knit** button to knit to Word and PDF. 
+
+1. Change your YAML to the right...
+
+1. Be __very careful__ about indentation and `:` here!!
+
+1. `r emo::ji("yarn")` **Knit** to Word again- is there a TOC?
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
 yml_empty() %>% 
-  yml_output(html_document(toc = TRUE,
-                           toc_float = TRUE,
-                           theme = "flatly",
-                           df_print = "kable",
-                           code_download = TRUE)) %>% 
+  yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
+  yml_output(html_document(toc = TRUE, toc_float = TRUE, theme = "flatly"), 
+             word_document(toc = TRUE), 
+             pdf_document()
+             ) %>% 
   asis_yaml_output()
 ```
 
----
-class: inverse, center, middle
+]
 
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
+
+```{r echo = FALSE}
+countdown(minutes = 1)
+```
+
+---
+
+# What is hard about YAML?
+
+.pull-left[
+![](https://media.giphy.com/media/Nt2cPxzpKhbCE/giphy.gif)
+]
+
+.pull-right[
++ Indentations matter
+
++ Rarely informative error messages
+
++ Knowing which output options are relevant for different formats (i.e., Word, PDF, HTML, etc.)
+
++ Easy to forget the right `key`
+
++ Easy to forget the possible `values` for a given `key`
+]
+---
+class: your-turn
+
+# Your turn
+
+## Use an extension package
+
+
+1. Edit your YAML again! Change the `output:` key to only `distill::distill_article` 
+
+1. Save the document; click on the dropdown `r emo::ji("yarn")` **Knit** button- what do you notice?
+
+1. `r emo::ji("yarn")` **Knit** to distill_article.
+
+**If this was easy**, add a table of contents too.
+
+_psst...answers on the next slide..._
+
+```{r echo = FALSE}
+countdown(minutes = 2)
+```
+
+
+.footnote[(note: this requires you to install the [`distill` package](https://rstudio.github.io/distill/) on your own computer)]
+
+???
+
+At this point, I'm going to stick with the distill_article output format for the rest of this session.
+
+---
+class: your-turn
+
+# Your turn
+
+## Answer
+
+.pull-left[
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
+  yml_output(distill::distill_article()) %>% 
+  asis_yaml_output()
+```
+]
+
+.pull-right[
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
+  yml_output(distill::distill_article(toc = TRUE)) %>% 
+  asis_yaml_output()
+```
+]
+
+---
+class: middle
+
+# Check-in
+
+.pull-left[
+How do you add a single output **format** to your YAML?
+
+```yaml
+---
+output: html_document: default
+---
+output: html_document
+---
+```
+
+]
 
 --
 
-# Text
+.pull-right[
+How do you add an output **option** to a format in your YAML?
+
+```yaml
+---
+output: 
+  html_document: 
+    toc: true
+---
+output: 
+  html_document(toc=true)
+---
+```
+
+]
+
+---
+class: middle
+
+# Check-in
+
+.pull-left[
+How do you add another output **format** to your YAML?
+
+```yaml
+---
+output: 
+  html_document: default
+  word_document: default
+---
+output: 
+  html_document()
+  word_document()
+---
+```
+
+]
+
+--
+
+
+.pull-right[
+How do you now add output **options** to your YAML?
+
+```yaml
+---
+output: 
+  html_document: 
+    toc: true
+  word_document: default
+---
+output: 
+  html_document(toc=true)
+  word_document(default)
+---
+```
+
+]
+
+---
+template: card0
+
+---
+template: card1
+
+---
+name: card2
+background-image: url(images/card2.png)
+background-size: contain
+
+.footnote[https://www.dear-data.com/]
+
+---
+class: center, middle
+
+# Do this! `r emo::ji("point_down")`
+
+# https://commonmark.org/help/tutorial/
 
 ---
 
@@ -1292,877 +1483,17 @@ countdown(minutes = 5)
 ```
 
 ---
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Output formats
-
+template: card0
 
 ---
-class: middle, center
-
-```{r echo=FALSE,out.width="50%"}
-knitr::include_graphics("images/outputs.png")
-```
-
-???
-
-Built in formats (in the `rmarkdown` package)
-
-versus
-
-extensions (different packages that extend output formats available to you)
+template: card1
 
 ---
-class: middle, center
-
-
-```{r echo=FALSE, out.width="40%", fig.link="https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats"}
-knitr::include_graphics("images/rmdbase-formats.png")
-```
-
-https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats
+template: card2
 
 ---
-class: your-turn
-
-# Your turn
-
-## Use a different built-in format
-
-.pull-left[
-
-Use the drop-down menu for the `r emo::ji("yarn")` **Knit** button and try:
-
-1. Knit to Word
-
-1. Knit to PDF
-
-]
-
-.pull-right[
-```{r echo=FALSE, out.width="60%", fig.align="center"}
-knitr::include_graphics("images/knit-dropdown.png")
-```
-
-]
-
-```{r echo = FALSE}
-countdown(minutes = 2)
-```
-
-
----
-
-# Temp check `r emo::ji("thermometer")`
-
-Does your current YAML look like this?
-
-```{r echo=FALSE}
-yml_empty() %>% 
-  yml_author("Your name here") %>% 
-  yml_title("Your title here") %>% 
-  yml_output(html_document(toc = TRUE, toc_float = TRUE, theme = "flatly"), 
-             word_document(), 
-             pdf_document()
-             )  %>% 
-  asis_yaml_output()
-```
-
-???
-
-This is a great way to "control" your knit button!
-
-Notice that when you knit, it respects those output options in your YAML.
-
-This way you "save" your output options
-
----
-class: your-turn
-
-# Your turn
-
-## Add output options with your YAML
-
-.pull-left[
-
-You just used the drop-down `r emo::ji("yarn")` **Knit** button to knit to Word and PDF. 
-
-1. Change your YAML to the right...
-
-1. Be __very careful__ about indentation and `:` here!!
-
-1. `r emo::ji("yarn")` **Knit** to Word again- is there a TOC?
-
-]
-
-.pull-right[
-
-```{r echo=FALSE}
-yml_empty() %>% 
-  yml_author("Your name here") %>% 
-  yml_title("Your title here") %>% 
-  yml_output(html_document(toc = TRUE, toc_float = TRUE, theme = "flatly"), 
-             word_document(toc = TRUE), 
-             pdf_document()
-             ) %>% 
-  asis_yaml_output()
-```
-
-]
-
-
-```{r echo = FALSE}
-countdown(minutes = 1)
-```
-
----
-
-# What is hard about YAML?
-
-.pull-left[
-![](https://media.giphy.com/media/Nt2cPxzpKhbCE/giphy.gif)
-]
-
-.pull-right[
-+ Indentations matter
-
-+ Rarely informative error messages
-
-+ Knowing which output options are relevant for different formats (i.e., Word, PDF, HTML, etc.)
-
-+ Easy to forget the right `key`
-
-+ Easy to forget the possible `values` for a given `key`
-]
----
-class: your-turn
-
-# Your turn
-
-## Use an extension package
-
-
-1. Edit your YAML again! Change the `output:` key to only `distill::distill_article` 
-
-1. Save the document; click on the dropdown `r emo::ji("yarn")` **Knit** button- what do you notice?
-
-1. `r emo::ji("yarn")` **Knit** to distill_article.
-
-**If this was easy**, add a table of contents too.
-
-_psst...answers on the next slide..._
-
-```{r echo = FALSE}
-countdown(minutes = 2)
-```
-
-
-.footnote[(note: this requires you to install the [`distill` package](https://rstudio.github.io/distill/) on your own computer)]
-
-???
-
-At this point, I'm going to stick with the distill_article output format for the rest of this session.
-
----
-class: your-turn
-
-# Your turn
-
-## Answer
-
-.pull-left[
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_author("Your name here") %>% 
-  yml_title("Your title here") %>% 
-  yml_output(distill::distill_article()) %>% 
-  asis_yaml_output()
-```
-]
-
-.pull-right[
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_author("Your name here") %>% 
-  yml_title("Your title here") %>% 
-  yml_output(distill::distill_article(toc = TRUE)) %>% 
-  asis_yaml_output()
-```
-]
-
----
-class: middle
-
-# Check-in
-
-.pull-left[
-How do you add a single output **format** to your YAML?
-
-```yaml
----
-output: html_document: default
----
-output: html_document
----
-```
-
-]
-
---
-
-.pull-right[
-How do you add an output **option** to a format in your YAML?
-
-```yaml
----
-output: 
-  html_document: 
-    toc: true
----
-output: 
-  html_document(toc=true)
----
-```
-
-]
-
----
-class: middle
-
-# Check-in
-
-.pull-left[
-How do you add another output **format** to your YAML?
-
-```yaml
----
-output: 
-  html_document: default
-  word_document: default
----
-output: 
-  html_document()
-  word_document()
----
-```
-
-]
-
---
-
-
-.pull-right[
-How do you now add output **options** to your YAML?
-
-```yaml
----
-output: 
-  html_document: 
-    toc: true
-  word_document: default
----
-output: 
-  html_document(toc=true)
-  word_document(default)
----
-```
-
-]
-
----
-class: middle, center, inverse
-
-# Tables
-
-![](https://media.giphy.com/media/i9c6lFmOSXKZW/giphy.gif)
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Custom typed tables
-
-
----
-class: center
-
-# Markdown tables
-
-.pull-left[
-
-```markdown
-| Time          | Session | Topic    |
-|:--------------|:-------:|---------:|
-| _left_        | _center_| _right_  |
-| 01:00 - 01:50 | 1       | Anatomy  |
-| 01:50 - 02:00 |         | *Break*  |
-| 02:00 - 02:45 | 2       | Tables   |
-| 02:45 - 03:00 |         | *Break*  |
-
-```
-]
-
---
-
-.pull-right[
-
-| Time          | Session | Topic    |
-|:--------------|:-------:|---------:|
-| _left_        | _center_| _right_  |
-| 01:00 - 01:50 | 1       | Anatomy  |
-| 01:50 - 02:00 |         | *Break*  |
-| 02:00 - 02:45 | 2       | Tables   |
-| 02:45 - 03:00 |         | *Break*  |
-
-]
-
----
-class: your-turn
-
-# Your turn
-
-## Type up a Markdown table
-
-Find this section:
-
-```markdown
-<--TODO: add markdown table of treatment arms here-->
-```
-
-.pull-left[
-
-Using pipes `|`, make this table:
-
-| Arm | Drug   |
-|:----|:-------|
-| A   | IFL    |
-| F   | FOLFOX |
-| G   | IROX   |
-
-]
-
-.pull-right[
-
-![](https://qph.fs.quoracdn.net/main-qimg-637b91293b153c5cd40419c0872c2186)
-
-]
-
-_psst...answers on the next slide..._
-
-```{r echo=FALSE}
-countdown(minutes = 3)
-```
-
----
-class: your-turn
-
-# Your turn
-
-## Answers
-
-.pull-left[
-```markdown
-| Arm | Drug   |
-|:----|:-------|
-| A   | IFL    |
-| F   | FOLFOX |
-| G   | IROX   |
-```
-]
-
-.pull-right[
-```markdown
-|Arm|Drug|
-|:---|:---|
-|A|IFL|
-|F|FOLFOX|
-|G|IROX|
-```
-]
-
-Spacing actually doesn't matter - it mainly helps your eyeballs.
-
----
-class: center, middle
-
-# Two table types
-
-
-.pull-left[
-
-### for your eyes mainly
-
-```{r echo=FALSE}
-knitr::include_graphics("images/tables-you.jpg")
-```
-
-
-]
-
---
-
-.pull-right[
-
-### for other people's eyes too
-
-```{r echo=FALSE}
-knitr::include_graphics("images/tables-them.jpg")
-```
-]
-
----
-
-.pull-left[
-
-![](images/imani-_TuIdedBPwQ-unsplash.jpg)
-]
-
-.pull-right[
-![](images/gear_shift.jpg)
-]
-
-.footnote[Images from [Unsplash](https://unsplash.com/photos/_TuIdedBPwQ) and [Wikipedia](https://commons.wikimedia.org/wiki/File:FIAT_500L_gear_shift.jpg)]
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# EDA Tables
-
----
-
-# Let's try using data now
-
-```{r ref.label='load-data2'}
-```
-
----
-
-# EDA tables: `skimr`
-
-
-```{r skim, message=FALSE, warning=FALSE}
-library(skimr)
-
-mockdata %>% 
-  dplyr::select(age, fu_fct) %>% 
-  skimr::skim()
-```
-
----
-
-````
-```{r results='asis'}`r ''`
-mockdata %>% 
-  select(age, fu_fct) %>% 
-  skimr::skim() %>% 
-  kable()
-```
-````
-
-```{r skim-kable, results='asis', echo=FALSE}
-mockdata %>% 
-  dplyr::select(age, fu_fct) %>% 
-  skimr::skim() %>% 
-  knitr::kable()
-```
-
-
----
-
-# EDA tables: `janitor`
-
-Good for 1- and 2-way frequency tables with categorical variables
-
-Count number of participants by `arm`, then add by status (`fu_fct`) too
-
-.pull-left[
-
-```{r}
-mockdata %>% 
-  tabyl(arm)
-```
-
-] 
-
---
-
-.pull-right[
-
-```{r}
-mockdata %>% 
-  tabyl(arm) %>% 
-  adorn_totals("row") %>%
-  adorn_pct_formatting()
-```
-
-]
-
----
-
-.pull-left[
-
-````
-```{r results='asis'}`r ''`
-mockdata %>% 
-  tabyl(arm, fu_fct) %>%
-  knitr::kable()
-```
-````
-
-```{r results='asis', echo=FALSE}
-mockdata %>% 
-  tabyl(arm, fu_fct) %>%
-  knitr::kable()
-```
-
-] 
-
---
-
-.pull-right[
-
-````
-```{r results='asis'}`r ''`
-mockdata %>% 
-  tabyl(arm, fu_fct) %>% 
-  adorn_totals("row") %>%
-  adorn_percentages("row") %>%
-  adorn_pct_formatting(digits = 2) %>%
-  adorn_ns() %>%
-  knitr::kable()
-```
-````
-
-```{r results='asis', echo=FALSE}
-mockdata %>% 
-  tabyl(arm, fu_fct) %>% 
-  adorn_totals("row") %>%
-  adorn_percentages("row") %>%
-  adorn_pct_formatting(digits = 2) %>%
-  adorn_ns() %>%
-  knitr::kable()
-```
-
-]
-
----
-class: your-turn
-
-# Your turn
-
-## Fix this `tabyl`
-
-Find this section:
-```markdown
-<--TODO: make this print better with knitr::kable + code chunks-->
-```
-
-Make this `tabyl` print nicely when knitted.
-
-```{r results='hide'}
-mockdata %>% 
-  tabyl(arm) %>% 
-  adorn_totals("row") %>%
-  adorn_pct_formatting() 
-```
-
-_psst: answers on next slide..._
-
-```{r echo=FALSE}
-countdown(minutes = 3)
-```
-
----
-class: your-turn
-
-# Answer
-
-````
-```{r results='asis'}`r ''`
-mockdata %>% 
-  tabyl(arm) %>% 
-  adorn_totals("row") %>%
-  adorn_pct_formatting() %>% 
-  knitr::kable()
-```
-````
-
-```{r results='asis', echo=FALSE}
-mockdata %>% 
-  tabyl(arm) %>% 
-  adorn_totals("row") %>%
-  adorn_pct_formatting() %>% 
-  knitr::kable()
-```
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Table One
-
----
-
-# Table One from `arsenal`
-
-
-```{r}
-tableby(arm ~ sex, data = mockdata) 
-```
-
---
-
-
-```{r}
-tableby(arm ~ sex, data = mockdata) %>% 
-  summary()
-```
-
-
----
-
-# One more step!
-
-For R Markdown pretty printing...
-
-````
-```{r results='asis'}`r ''`
-tableby(arm ~ sex, data = mockdata) %>% 
-  summary()
-```
-````
-
-```{r results= 'asis', echo=FALSE}
-tableby(arm ~ sex, data = mockdata) %>% 
-  summary()
-```
-
-???
-
-This is a new knitr chunk option- the results option.
-
----
-class: your-turn
-
-# Your turn
-
-## Make a table one
-
-Find this section:
-
-```markdown
-<--TODO: add age and bmi here-->
-```
-
-1. Add the variables `age` and `bmi` to the table. (__hint:__ use the formula `arm ~ sex + var1 + var2`)
-
-1. Look at the next code chunk. It uses a different package, `tableone::CreateTableOne`. You only need one "table one", so pick which one you using your code chunks (don't delete!).
-
-1. Add/subtract variables from your table one as you like.
-
-(Note: leave this `layout="l-body-outset"` part alone- I'll explain!)
-
-```{r echo=FALSE}
-countdown(minutes = 3)
-```
-
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
---
-
-# Table Two
-
----
-class: your-turn
-
-# Your turn
-
-## Table two
-
-Find this section:
-```
-<--TODO: add adverse events table-->
-```
-
-1. Find the code chunk started for you. 
-
-1. Code and print a table called `ae_tab` that summarizes 2+ variables that start with `ae_`.
-
-__If this was easy__, edit the `summary()` function to modify the number of [digits](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#modify-the-number-of-digits-used). Or add [labels](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#add-labels).
-
-_psst...answers on next slide..._
-
-```{r echo = FALSE}
-countdown(minutes = 5)
-```
-
----
-class: your-turn
-
-# Answer
-
-````
-```{r results='asis', layout="l-body-outset"}`r ''`
-ae_tab <- mockdata %>% 
-  tableby(
-    arm ~ ae_blood_clot + ae_vomiting + ae_diarrhea + ae_neuropathy + ae_low_wbc, 
-    data = .) %>% 
-  summary(digits = 2, 
-          digits.p = 3, 
-          digits.pct = 1)
-ae_tab
-```
-````
-
----
-
-```{r results='asis', echo=FALSE}
-ae_tab <- mockdata %>% 
-  tableby(
-    arm ~ ae_blood_clot + ae_vomiting + ae_diarrhea + ae_neuropathy + ae_low_wbc, 
-    data = .) %>% 
-  summary(digits = 2, 
-          digits.p = 3, 
-          digits.pct = 1)
-ae_tab
-```
-
----
-
-```{r load-data3, include=FALSE}
-mockdata_all <- read_csv(here::here("mockpaper/data/mockdata.csv")) %>% 
-  mutate_at(vars(starts_with("ae_")), ~as.factor(.)) %>% 
-  mutate(fu_fct = fct_recode(as.factor(fu_stat), 
-                             "Lived" = "1", 
-                             "Died" = "2"))  
-
-# see my note below re: sites
-mockdata <- mockdata_all %>% 
-  filter(!site == "Nur-Sultan")
-
-source('figs.R')
-```
-
----
-class: inverse, middle
-
-
-.pull-left[
-
-```{r echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/ggplot2.png")
-```
-
-]
-
---
-
-.pull-right[
-
-[`ggplot2` package](https://ggplot2.tidyverse.org/)
-
-[`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
-
-[R4DS chapter](https://r4ds.had.co.nz/data-visualisation.html)
-
-]
-
----
-class: middle, center, inverse
-
-<span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
-  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
-</span> 
-
-# Get figures in
-
----
-class: your-turn
-
-# Your turn: Part 1 of 2
-
-**WARM-UP**: open `03-draft.Rmd` and read the source file. It has several figures coded using the `ggplot2` package.
-
-1. Knit the document to the `bookdown::html_document2` format &mdash; behold!
-
-1. Add output options to this format to use one of the [bootswatch themes](https://rmarkdown.rstudio.com/docs/reference/html_document.html) and include a [floating table of contents](https://rmarkdown.rstudio.com/docs/reference/html_document.html#floating-table-of-contents). *(hint: `?html_document`)*
-
-1. Knit to `bookdown::word_document2` (no options)- how does it look?
-
-1. Add `distill::distill_article` as an output format (consider adding a TOC too) and knit- what differences do you see between this and the `bookdown::html_document2` format?
-
-_psst...next slide has answers..._
-
-```{r echo=FALSE}
-countdown(minutes = 5)
-```
-
-
----
-class: your-turn
-
-# Answer
-
-.pull-left[
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_output(bookdown::html_document2(theme = "flatly", toc = TRUE, toc_float = TRUE),
-             bookdown::word_document2(),
-             distill::distill_article(toc = TRUE)) %>% 
-  asis_yaml_output()
-```
-]
-
-.pull-right[
-````
-```{r setup, include=FALSE}`r ''`
-knitr::opts_chunk$set(
-  echo = FALSE,
-  warning = FALSE,
-  message = FALSE,
-  comment = NA,
-  R.options = list(width = 70)
-)
-```
-````
-
-Distill is much less chatty than other outputs due to default `knitr` code chunk options: https://rstudio.github.io/distill/basics.html#code-blocks
-
-]
+background-image: url(images/card3.png)
+background-size: contain
 
 ---
 class: middle, center
@@ -2170,6 +1501,7 @@ class: middle, center
 # The line-up
 
 ```{r fig.show="hold", out.width='25%', echo = FALSE, fig.retina=3}
+source('figs.R')
 age_histogram
 surv_pct_plot
 surv_days_plot
@@ -2669,14 +2001,422 @@ knitr::opts_chunk$set(
 ````
 
 ---
+class: middle, center, inverse
 
-# `r emo::ji("star")` Tip
+# Tables
 
-http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/
+![](https://media.giphy.com/media/i9c6lFmOSXKZW/giphy.gif)
+
+---
+class: middle, center, inverse
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
+  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
+</span> 
+
+--
+
+# Custom typed tables
+
+
+---
+class: center
+
+# Markdown tables
+
+.pull-left[
+
+```markdown
+| Time          | Session | Topic    |
+|:--------------|:-------:|---------:|
+| _left_        | _center_| _right_  |
+| 01:00 - 01:50 | 1       | Anatomy  |
+| 01:50 - 02:00 |         | *Break*  |
+| 02:00 - 02:45 | 2       | Tables   |
+| 02:45 - 03:00 |         | *Break*  |
+
+```
+]
+
+--
+
+.pull-right[
+
+| Time          | Session | Topic    |
+|:--------------|:-------:|---------:|
+| _left_        | _center_| _right_  |
+| 01:00 - 01:50 | 1       | Anatomy  |
+| 01:50 - 02:00 |         | *Break*  |
+| 02:00 - 02:45 | 2       | Tables   |
+| 02:45 - 03:00 |         | *Break*  |
+
+]
+
+---
+class: center, middle
+
+# Two table types
+
+
+.pull-left[
+
+### for you
 
 ```{r echo=FALSE}
-knitr::include_url("http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/")
+knitr::include_graphics("images/tables-you.jpg")
 ```
+
+
+]
+
+--
+
+.pull-right[
+
+### for everyone else
+
+```{r echo=FALSE}
+knitr::include_graphics("images/tables-them.jpg")
+```
+]
+
+---
+
+.pull-left[
+
+![](images/imani-_TuIdedBPwQ-unsplash.jpg)
+]
+
+.pull-right[
+![](images/gear_shift.jpg)
+]
+
+.footnote[Images from [Unsplash](https://unsplash.com/photos/_TuIdedBPwQ) and [Wikipedia](https://commons.wikimedia.org/wiki/File:FIAT_500L_gear_shift.jpg)]
+
+---
+class: middle, center, inverse
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
+  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
+</span> 
+
+--
+
+# Tables for You (EDA)
+
+---
+
+# Let's try using data now
+
+```{r ref.label='load-data2'}
+```
+
+---
+
+# EDA tables: `janitor`
+
+Good for 1- and 2-way frequency tables with categorical variables
+
+Count number of participants by `arm`, then add by status (`fu_fct`) too
+
+.pull-left[
+
+```{r}
+mockdata %>% 
+  tabyl(arm)
+```
+
+] 
+
+--
+
+.pull-right[
+
+```{r}
+mockdata %>% 
+  tabyl(arm) %>% 
+  adorn_totals("row") %>%
+  adorn_pct_formatting()
+```
+
+]
+
+---
+
+.pull-left[
+
+````
+```{r}`r ''`
+mockdata %>% 
+  tabyl(arm, fu_fct) %>%
+  gt::gt()
+```
+````
+
+```{r echo=FALSE}
+mockdata %>% 
+  tabyl(arm, fu_fct) %>%
+  gt::gt()
+```
+
+] 
+
+--
+
+.pull-right[
+
+````
+```{r}`r ''`
+mockdata %>% 
+  tabyl(arm, fu_fct) %>% 
+  adorn_totals("row") %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 2) %>%
+  adorn_ns() %>%
+  gt::gt()
+```
+````
+
+```{r echo=FALSE}
+mockdata %>% 
+  tabyl(arm, fu_fct) %>% 
+  adorn_totals("row") %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 2) %>%
+  adorn_ns() %>%
+  gt::gt()
+```
+
+]
+
+---
+class: middle, center, inverse
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
+  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
+</span> 
+
+--
+
+# Table One
+
+---
+
+# Table One from `arsenal`
+
+
+```{r}
+tableby(arm ~ sex, data = mockdata) 
+```
+
+--
+
+
+```{r}
+tableby(arm ~ sex, data = mockdata) %>% 
+  summary()
+```
+
+
+---
+
+# One more step!
+
+For R Markdown pretty printing...
+
+````
+```{r results='asis'}`r ''`
+tableby(arm ~ sex, data = mockdata) %>% 
+  summary()
+```
+````
+
+```{r results= 'asis', echo=FALSE}
+tableby(arm ~ sex, data = mockdata) %>% 
+  summary()
+```
+
+???
+
+This is a new knitr chunk option- the results option.
+
+
+
+---
+class: middle, center, inverse
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
+  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
+</span> 
+
+--
+
+# Table Two
+
+---
+class: your-turn
+
+# Your turn
+
+## Table two
+
+Find this section:
+```
+<--TODO: add adverse events table-->
+```
+
+1. Find the code chunk started for you. 
+
+1. Code and print a table called `ae_tab` that summarizes 2+ variables that start with `ae_`.
+
+__If this was easy__, edit the `summary()` function to modify the number of [digits](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#modify-the-number-of-digits-used). Or add [labels](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html#add-labels).
+
+_psst...answers on next slide..._
+
+```{r echo = FALSE}
+countdown(minutes = 5)
+```
+
+---
+class: your-turn
+
+# Answer
+
+````
+```{r results='asis', layout="l-body-outset"}`r ''`
+ae_tab <- mockdata %>% 
+  tableby(
+    arm ~ ae_blood_clot + ae_vomiting + ae_diarrhea + ae_neuropathy + ae_low_wbc, 
+    data = .) %>% 
+  summary(digits = 2, 
+          digits.p = 3, 
+          digits.pct = 1)
+ae_tab
+```
+````
+
+---
+
+```{r results='asis', echo=FALSE}
+ae_tab <- mockdata %>% 
+  tableby(
+    arm ~ ae_blood_clot + ae_vomiting + ae_diarrhea + ae_neuropathy + ae_low_wbc, 
+    data = .) %>% 
+  summary(digits = 2, 
+          digits.p = 3, 
+          digits.pct = 1)
+ae_tab
+```
+
+---
+
+```{r load-data3, include=FALSE}
+mockdata_all <- read_csv(here::here("mockpaper/data/mockdata.csv")) %>% 
+  mutate_at(vars(starts_with("ae_")), ~as.factor(.)) %>% 
+  mutate(fu_fct = fct_recode(as.factor(fu_stat), 
+                             "Lived" = "1", 
+                             "Died" = "2"))  
+
+# see my note below re: sites
+mockdata <- mockdata_all %>% 
+  filter(!site == "Nur-Sultan")
+
+source('figs.R')
+```
+
+---
+class: inverse, middle
+
+
+.pull-left[
+
+```{r echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/ggplot2.png")
+```
+
+]
+
+--
+
+.pull-right[
+
+[`ggplot2` package](https://ggplot2.tidyverse.org/)
+
+[`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+
+[R4DS chapter](https://r4ds.had.co.nz/data-visualisation.html)
+
+]
+
+---
+class: middle, center, inverse
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
+  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
+</span> 
+
+# Get figures in
+
+---
+class: your-turn
+
+# Your turn: Part 1 of 2
+
+**WARM-UP**: open `03-draft.Rmd` and read the source file. It has several figures coded using the `ggplot2` package.
+
+1. Knit the document to the `bookdown::html_document2` format &mdash; behold!
+
+1. Add output options to this format to use one of the [bootswatch themes](https://rmarkdown.rstudio.com/docs/reference/html_document.html) and include a [floating table of contents](https://rmarkdown.rstudio.com/docs/reference/html_document.html#floating-table-of-contents). *(hint: `?html_document`)*
+
+1. Knit to `bookdown::word_document2` (no options)- how does it look?
+
+1. Add `distill::distill_article` as an output format (consider adding a TOC too) and knit- what differences do you see between this and the `bookdown::html_document2` format?
+
+_psst...next slide has answers..._
+
+```{r echo=FALSE}
+countdown(minutes = 5)
+```
+
+
+---
+class: your-turn
+
+# Answer
+
+.pull-left[
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_output(bookdown::html_document2(theme = "flatly", toc = TRUE, toc_float = TRUE),
+             bookdown::word_document2(),
+             distill::distill_article(toc = TRUE)) %>% 
+  asis_yaml_output()
+```
+]
+
+.pull-right[
+````
+```{r setup, include=FALSE}`r ''`
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  comment = NA,
+  R.options = list(width = 70)
+)
+```
+````
+
+Distill is much less chatty than other outputs due to default `knitr` code chunk options: https://rstudio.github.io/distill/basics.html#code-blocks
+
+]
+
+
 
 
 ---

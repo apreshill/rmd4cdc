@@ -137,7 +137,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   font-size: 2.6em;
   padding-top: 2em;
   line-height: 1em;
-  padding-bottom: .1em;
+  padding-bottom: 1em;
   word-wrap: break-word;
 }
 
@@ -147,9 +147,9 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   font-size: 1.6em;
   color: #1a162d;
   text-shadow: none;
-  padding-top: .1em;
+  padding-top: 0em;
   margin-top: 0px;
-  margin-bottom: 50px;
+  margin-bottom: 1em;
 }
 
 .title-slide h3 {
@@ -162,21 +162,11 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   line-height: 1.6em;
 }
 
-.title-slide h4 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 1.4em;
-  color: #1a162d;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
 .title-slide a {
-  color: #fff;
+  color: #1a162d;
 }
 
 .inverse h1 {
-  font-size: 6em;
   font-family: 'Noto Serif JP', serif;
   color: #fff;
   padding-top: 0px;
@@ -186,7 +176,6 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 }
 
 .inverse h2 {
-  font-size: 8em;
   font-family: 'Noto Serif JP', serif;
   text-shadow: 1px 1px 1px #003b3c;
   color: #fff;
@@ -195,7 +184,6 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 }
 
 .inverse h3 {
-  font-size: 6em;
   font-family: 'Noto Serif JP', serif;
   text-shadow: 1px 1px 1px #003b3c;
   color: #fff;
